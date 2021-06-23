@@ -1,0 +1,298 @@
+
+
+
+<!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+
+ <div class="row" style="">
+   <div class="col-2">
+   <nav id="sidebar">
+             <div class="sidebar-header">
+                 <h3>상품 조회</h3>
+             </div>
+
+             <ul class="list-unstyled components">
+                 <p>카테고리</p>
+                 <li class="active">
+                     <a href="#AccSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">액세서리</a>
+
+                               <ul class="collapse list-unstyled" id="AccSubmenu">
+                                  <li><a href="#">- 목걸이 </a></li>
+                                  <li><a href="#">- 귀걸이 </a></li>
+                                  <li><a href="#">- 반지 </a></li>
+                                  <li><a href="#">- 팔찌,발찌 </a></li>
+                                   <li><a href="#">- 기타 </a></li>
+                               </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#SoapSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">비누, 캔들</a>
+
+                               <ul class="collapse list-unstyled" id="SoapSubmenu">
+                                  <li><a href="#">- 비누 </a></li>
+                                  <li><a href="#">- 캔들 </a></li>
+                                  <li><a href="#">- 디퓨져 </a></li>
+
+                               </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#BeautySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">뷰티</a>
+
+                                <ul class="collapse list-unstyled" id="BeautySubmenu">
+                                   <li><a href="#">- 화장품 </a></li>
+                                   <li><a href="#">- 향수 </a></li>
+                                </ul>
+                 </li>
+                 <li class="active">
+                     <a href="#GeneralSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">잡화</a>
+
+                                <ul class="collapse list-unstyled" id="GeneralSubmenu">
+                                   <li><a href="#">- 가방 </a></li>
+                                   <li><a href="#">- 신발 </a></li>
+                                   <li><a href="#">- 모자 </a></li>
+                                   <li><a href="#">- 지갑 </a></li>
+                                </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#ElecSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">전자기기</a>
+
+                                <ul class="collapse list-unstyled" id="ElecSubmenu">
+                                   <li><a href="#">- 핸드폰 케이스 </a></li>
+                                   <li><a href="#">- 에어팟/버즈 케이스 </a></li>
+                                   <li><a href="#">- 파우치 </a></li>
+                                </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#ToySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">완구, 팬시</a>
+
+                                <ul class="collapse list-unstyled" id="ToySubmenu">
+                                   <li><a href="#">- 인형 </a></li>
+                                   <li><a href="#">- 문구/팬시 </a></li>
+                                   <li><a href="#">- 장난감 </a></li>
+                                </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#SnackSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">식품</a>
+
+                                <ul class="collapse list-unstyled" id="SnackSubmenu">
+                                   <li><a href="#">- 디저트 </a></li>
+                                   <li><a href="#">- 커피/차 </a></li>
+                                   <li><a href="#">- 수제반찬 </a></li>
+                                </ul>
+                 </li>
+             </ul>
+         </nav>
+    </div>
+    <div class="col-9" style="margin-top: 20px;">
+    <div class="panel-heading" style="width: 500px;">
+      <nav aria-label="breadcrumb" >
+        <h5><b>상품 분류</b></h5>
+        <ol class="breadcrumb" style="background:#ffdfb3">
+          <li class="breadcrumb-item"><a><%=prodata[0].bigCate%></a></li>
+          <li class="breadcrumb-item"><a><%=prodata[0].midCate%></a></li>
+
+          <li class="breadcrumb-item active" aria-current="page"><%=prodata[0].productName%></li>
+        </ol>
+      </nav>
+    </div>
+
+    <hr>
+    <div class="container-fluid">
+     <div class="row align-items-end">
+        <div class="col-5" style="margin: 2% 0;">
+           <div class="card  mb-3" style="width: 100%; max-height: 600px; border-color: #a0a0a0">
+              <div class="card-header bg-transparent" style="border-color: #a0a0a0;"><small><%=prodata[0].shopName%>&nbsp&nbsp</small><strong><%=prodata[0].productName%></strong></div>
+              <div class="card-body text-primary" style="width: 100%; height: 100%; overflow: hidden;">
+                  <div> <img class="img-fluid" src="<%=prodata[0].productImg%>"> </div>
+
+              </div>
+              <div class="card-footer bg-transparent">판매가&nbsp;<%=prodata[0].price%>원&nbsp;&nbsp;/&nbsp;&nbsp;최저가&nbsp;<%=prodata[0].price%>원</div>
+            </div>
+        </div>
+        <div class="col-7" style="margin:auto;">
+          <div id='chart'  style="width: 100%; margin-top: 30px;">
+            <script>
+              $(document).ready(function(){
+              var stockDate=$('#hiddendate').val();
+              var price=$('#hiddenPrice').val();
+              stockDate=stockDate.substr(0,stockDate.length-1);
+              var dateArray=stockDate.split(',');
+
+              var current=new Date();
+
+              var priceArray=new Array(dateArray.length);
+              var stockDateArray=new Array(dateArray.length);
+
+              for(var i=0;i<dateArray.length;i++){
+
+                var stockday=new Date(dateArray[i]);
+                var diff=(stockday.getTime()-current.getTime())/1000/24/60/60;
+                diff=Math.floor(diff);
+
+                if(diff<7){
+                    priceArray[i]=price/1000;
+                  }else if(diff<14){
+                    priceArray[i]=(price-1000)/1000;
+                  }else if(diff<21){
+                    priceArray[i]=(price-2000)/1000;
+                  }else {
+                    priceArray[i]=(price-3000)/1000;
+                  }
+                  // alert(priceArray[i]);
+                  var year=stockday.getFullYear();
+                  var month=stockday.getMonth()+1;
+                  var day=stockday.getDate();
+                  stockDateArray[i]=''+year+'-'+month+'-'+day;
+                  // alert(stockDateArray[i]);
+              }
+              var xydata = {
+                x: stockDateArray,
+                y: priceArray,
+                type: 'scatter'
+              };
+              var chartdata = [xydata];
+              Plotly.plot('chart',chartdata);
+            });
+            </script>
+          </div>
+          <center><p style="margin-top: 2%;">날짜별 할인가격 차트로 확인하고 선택하세요(단위: 천 원)</p></center>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+  <div class="row" style="">
+
+    <div class="col-5" style="margin-left: 2%;">
+    <p><%=prodata[0].productMent%></p>
+    </div>
+
+
+    <div class="col-4" style="margin-left:10%;">
+    <form method="post" action="/order" style="width: 250px">
+
+
+        <div class="form-inline">
+          <label for="">배송일</label>&nbsp;&nbsp;&nbsp;
+          <!-- <input type="text" id="datepicker" class="form-control" style="width: 150px;"/> -->
+          <input type="text" id="datepicker" name="datepicker" class="form-control" style="width: 110px;"/>&nbsp;
+          <%
+          var dates='';
+          var amount='';
+          for(var i=0;i<stockData.length;i++){
+            dates+=stockData[i].stockDATE.toString()+',';
+            amount+=stockData[i].stockAmount.toString()+',';
+          }
+          %>
+          <input type="hidden" id="stock" value="<%=stockData%>"/>
+          <input type="hidden" id="hiddendate" value="<%=dates%>"/>
+          <input type="hidden" id="hiddenamount" value="<%=amount%>"/>
+          <!--hidden type response받은 데이터를 저장해두고 스크립트 코드에서 사용하기 위해-->
+
+          <input type="hidden" id="hiddenProdName" name="hiddenProdName" value="<%=prodata[0].productName%>"/>
+          <input type="hidden" id="hiddenPrice" name="hiddenPrice" value="<%=prodata[0].price%>"/>
+          <input type="hidden" id="hiddenMinPrice" name="hiddenMinPrice" value="<%=prodata[0].minPrice%>"/>
+          <input type="hidden" id="hiddenImg" name="hiddenImg" value="<%=prodata[0].productImg%>"/>
+          <input type="hidden" id="hiddenNum" name="hiddenProdNum" value="<%=prodata[0].productNum%>"/>
+          <!--hidden type response받은 데이터를 저장해두고 서버로 전송하여 재사용하기 위해-->
+        </div>
+        <br>
+        <div class="form-inline">
+          <label for="">할인가</label>&nbsp;&nbsp;&nbsp;
+          <input type="text" id="salePrice" name="salePrice" class="form-control" style="width: 110px;" readonly/>
+        </div>
+        <br>
+        <div class="form-inline">
+          <label for="">수량</label>&nbsp;&nbsp;&nbsp;
+          <select class="" id="stockAmount" name="stockAmount"></select>&nbsp;개
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" value="주문하기" style="background:#fdc7b5; border:0px; color:black; width:90px;"/>
+        <input type="" class="btn btn-primary" value="장바구니" style="background:#fdc7b5; border:0px; color:black; width:90px; margin-left: 50px;">
+
+        <!-- <button type=button class="btn btn-warning">주문하기</button> -->
+    </form>
+
+    </div><!--폼, 차트-->
+  </div>
+
+
+
+  <div class="container" style="margin-top:30px;">
+      <ul class="nav nav-tabs nav-justified" role="tablist" style="">
+       <li class="nav-item">
+         <a class="nav-link active" data-toggle="tab" href="#product">상세정보</a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" data-toggle="tab" href="#review">상품후기(<%=review.length%>)</a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" data-toggle="tab" href="#enquiry">상품Q&A(<%=enquiry.length%>)</a>
+       </li>
+     </ul>
+   <div class="tab-content">
+     <div class="container tab-pane active" id="product">
+       <h4 style="margin:20px 200px 20px 20px; font-weight:900;">상세정보</h4>
+       <div class="container" style="text-align:center">
+         <img class="img-fluid" src="<%=prodata[0].detailImg%>">
+       </div>
+     </div>
+     <div class="container tab-pane fade" id="review">
+       <div style="margin:20px 35px 25px 20px;"><h4 style="font-weight:900; display:inline">상품후기(<%=review.length%>)</h4>
+       <button type="button" name="button" class="btn btn-danger" onclick="location.href=''" style="display:inline; float:right;">구매후기 작성하기</button></div>
+
+       <div class="container-fluid">
+         <% for(var i =0 ; i<review.length; i++) { %>
+         <div class="review" style="margin-bottom: 10px; margin-top: 50px;height:100px;">
+           <img src="/images/user.png"  style="height:25px;"alt="">
+          <span class="reviewWriter">작성자: <%=review[i].writer%></span>
+          <span class="reviewDATE" style="float:right">작성날짜: <%=review[i].reviewDATE%> </span>
+          <div class="container" style="width:100%; height:100%; margin-top: 8px;border:1px solid black">
+            <div style="margin-top:10px;">
+              <img src="/images/review/<%= review[i].reviewImg %>" alt="" style="height:50px;width:50px;">
+              <pre style="display:inline;"><%=review[i].reviewMent%></pre>
+            </div>
+            <div class="">
+              <abbr title="평가" class="font-italic" style="font-size:12px;color:red;"><%=review[i].assessment%></abbr>
+            </div>
+          </div>
+         </div>
+         <% } %>
+       </div>
+     </div>
+    <div class="container tab-pane fade" id="enquiry">
+        <div style="margin:20px 35px 25px 20px;"><h4 style="font-weight:900; display:inline">상품Q&A(<%=enquiry.length%>)</h4>
+          <form class="" action="/product/enquiry/form" method="post" style="display:inline">
+            <input type="hidden" name="productNum" value="<%=prodata[0].productNum%>">
+            <button type="submit" class="btn btn-danger"  style="display:inline; float:right;">상품문의 작성하기</button></div>
+          </form>
+
+        <div class="container-fluid">
+          <% for(var i =0 ; i<enquiry.length; i++) { %>
+          <div class="review" style="margin-bottom: 10px; margin-top: 50px;height:100px;">
+            <img src="/images/user.png"  style="height:25px;"alt="">
+           <span class="enquiryWriter">작성자: <%=enquiry[i].writer%></span>
+           <span style="margin-left: 50px">제목: <a href="/shop/enquiry/detail?id=<%= enquiry[i].enquiryNum %>"><%=enquiry[i].enquiryTitle%></a></span>
+           <span class="DATE" style="float:right">작성날짜: <%=enquiry[i].date%> </span>
+           <div class="container" style="width:100%; height:100%; margin-top: 8px;border:1px solid black">
+             <div style="margin-top:10px;">
+               <pre style="display:inline;"><%=enquiry[i].writerMent%></pre>
+             </div>
+             </div>
+          </div>
+          <% } %>
+        </div>
+     </div>
+     </div>
+
+  </div>
+  </div>
+
+
+  </div>

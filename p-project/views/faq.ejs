@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+    <ul class="nav flex-column">
+      <h3>고객센터</h3>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/faq">FAQ</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/faq">카테고리별 FAQ</a></li>
+      <h5 style="margin-left:15px">1:1문의</h5>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/mallenquiry/list/1">문의내역 확인하기</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/mallenquiry/new">문의하기</a></li>
+      <h5 style="margin-left:15px">입점문의</h5>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/openshop">입점 문의하기</a></li>
+      <!-- <li class="nav-item"><a class="nav-link text-secondary" href="#">입점문의 게시판</a></li> -->
+
+
+  </ul>
+    </div>
+  </div>
+<div class="col-sm-10">
+  <div class="row">
+    <div class="faq container" >
+      <h5 class="boardZone">FAQ BEST5</h5>
+      <table class="table" style="width:95%; margin:auto; margin-left: 0px;text-align:center; margin-bottom:30px;">
+        <thead>
+          <tr style="">
+            <th>번호</th>
+            <th>분류</th>
+            <th>제목</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0;i < 5;i++) { %>
+          <tr>
+            <td><%=i+1%></td>
+            <%if(faq[i].category=="event"){%>
+            <td>이벤트</td>
+            <%}%>
+            <%if(faq[i].category=="member"){%>
+            <td>회원관련</td>
+            <%}%>
+            <%if(faq[i].category=="ship"){%>
+            <td>배송</td>
+            <%}%>
+            <%if(faq[i].category=="exchange"){%>
+            <td>교환/환불/취소</td>
+            <%}%>
+            <%if(faq[i].category=="payment"){%>
+            <td>결제</td>
+            <%}%>
+            <%if(faq[i].category=="product"){%>
+            <td>상품관련</td>
+            <%}%>
+            <td><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+   <div class="container">
+       <ul class="nav nav-tabs" role="tablist" style="">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#all">전체</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#ship">배송</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#exchange">교환/환불/취소</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#payment">결제</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#product">상품문의</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#event">이벤트</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#member">회원관련</a>
+        </li>
+      </ul>
+    <div class="tab-content">
+      <ul class="boardlist tab-pane active" id="all">
+        <% for(var i=0;i < faq.length;i++) { %>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% } %>
+      </ul>
+      <ul class="boardlist tab-pane fade" id="ship">
+        <% for(var i=0;i < faq.length;i++) {
+          if(faq[i].category == "ship"){%>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% }} %>
+      </ul>
+      <ul class="boardlist tab-pane fade" id="exchange">
+        <% for(var i=0;i < faq.length;i++) {
+          if(faq[i].category == "exchange"){%> %>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% }} %>
+      </ul>
+      <ul class="boardlist tab-pane fade" id="payment">
+        <% for(var i=0;i < faq.length;i++) {
+          if(faq[i].category == "payment"){%> %>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% }} %>
+      </ul>
+      <ul class="boardlist tab-pane fade" id="product">
+        <% for(var i=0;i < faq.length;i++) {
+          if(faq[i].category == "product"){%> %>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% }} %>
+      </ul>
+      <ul class="boardlist tab-pane fade" id="event">
+        <% for(var i=0;i < faq.length;i++) {
+          if(faq[i].category == "event"){%>%>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% }}%>
+      </ul>
+      <ul class="boardlist tab-pane fade" id="member">
+        <% for(var i=0;i < faq.length;i++) {
+          if(faq[i].category == "member"){%>%>
+        <li><a href="/service/faq/detail?id=<%= faq[i].faqNum %>"><%= faq[i].faqTitle %></a></li>
+        <% }} %>
+      </ul>
+      </div>
+
+   </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+  <div class="container">
+    <% for(var i = 0; i<eventDetail.length; i++) {
+      if(eventDetail[i].eventNum == id){ %>
+    <div class="faqtitle">
+      <strong><h2><%= eventDetail[i].eTitle %></h2></strong>
+
+      <strong>
+        <%= eventDetail[i].startDATE %>
+        ~
+        <%= eventDetail[i].endDATE %>
+        &emsp;&emsp;&emsp;조회수:
+        <%= eventDetail[i].hit %>
+      </strong>
+    </div>
+    <hr>
+    <div class="ment">
+      <p><%= eventDetail[i].eventMent %></p>
+      <img src="/images/event/<%= eventDetail[i].eventDetail %>" style="height:100%; width:100%;">
+
+    </div>
+    <% }} %>
+  </div>

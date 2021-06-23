@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div class="container">
+  <% for(var i = 0; i<infoDetail.length; i++) {
+    if(infoDetail[i].infoNum == id){ %>
+  <div class="faqtitle">
+    <strong><h2><%= infoDetail[i].infoName %></h2></strong>
+  </div>
+  <hr>
+  <div class="ment">
+    <p><%= infoDetail[i].infoMent %></p>
+  </div>
+   <% }} %>
+   <hr>
+   <div class="container">
+   <%=admin%><form action="/adminbulletin/info/detail?id=<%=id%>" method="post" style="display: inline; float: right; margin-left: 10px">
+   <input type="hidden" name="_method" value="delete">
+   <button type="<%=buttonType%>" onclick="<%=onclick2%>" class="btn btn-danger"><%=button2%></button>
+   <%=admin%></form>
+   <button type="<%=buttonType%>" onclick="location.href='/adminbulletin/info/update?id=<%=id%>'" class="btn btn-primary" style="display: inline; float:right;"><%=button1%></button>
+   <button type="button"  class="btn btn-primary" onclick="location.href='/adminbulletin/list/1'">목록</button>
+   </div>
+ </div>

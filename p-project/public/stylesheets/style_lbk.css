@@ -1,0 +1,132 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+ .list-group{
+   margin-top: 20px;
+   border-style: none;
+ }
+ .list-group-item-heading{
+   padding: 10px 0;
+   background-color: rgb(0,117,216);
+   text-align: center;
+   color: rgb(255,255,255);
+   font-weight: bold;
+   font-size: 27px;
+ }
+ .list-group-item{
+   font-size: 20px;
+   text-align: center;
+ }
+ .list-group-item:hover{
+  text-decoration: none;
+  background-color: rgb(0,117,216);
+
+  color: rgb(255,255,255);
+}
+.list-group-item a:hover{
+  text-decoration: none;
+  color: rgb(255,255,255);
+}
+/* Style the search field */
+form.searchForm{
+  display: flex;
+  justify-content: center;
+
+}
+form.searchForm select{
+  width: 11%;
+  height: 47px;
+
+  border-radius: 5px 0 0 5px;
+}
+/* form.searchForm select > option{
+  width: auto;
+  height: 47px;
+  text-align: center;
+} */
+form.searchForm input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid gray;
+
+  width: 50%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.searchForm button {
+
+  width: 6%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid gray;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+form.searchForm button:hover {
+  background: #0b7dda;
+}
+/* Clear floats */
+form.searchForm::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.boxbox form{
+  width: inherit;
+}
+.boxbox .form-inline{
+  margin-top: 10px;
+
+}
+.boxbox .form-inline label{
+
+  margin-right: 10px;
+}
+.boxobx .form-inline input{
+}
+.boxbox .form-group{
+  margin-top: 10px;
+}
+.boxbox select{
+  width: 100px;
+}
+/* .boxbox #productImg{
+  height: 200px;
+  width: 300px;
+  border-style: inset;
+} */
+.boxbox .img_wrap{
+  width: 300px;
+}
+.boxbox .img_wrap img{
+  margin-top: 10px;
+  max-width: 50%;
+
+}
+
+.boxbox .product-detail img{
+  height: 96px;
+  width: 96px;
+  border-style: inset;
+}
+.boxbox .btn-primary{
+  margin: 10px 50px;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+  padding: 0;
+  font-size: 30px;
+}
+
+/* datepicker */
+/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
+.ui-datepicker-trigger{cursor: pointer;}
+/*datepicer input 롤오버 시 손가락 모양 표시*/
+.hasDatepicker{cursor: pointer;}

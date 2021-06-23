@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+
+  <div class="wrapper row">
+
+    <div class="col-2">
+    <nav id="sidebar">
+              <div class="sidebar-header">
+                  <h3>상품 조회</h3>
+              </div>
+
+              <ul class="list-unstyled components">
+                  <p>카테고리</p>
+                  <li class="active">
+                      <a href="#AccSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">액세서리</a>
+
+                                <ul class="collapse list-unstyled" id="AccSubmenu">
+                                   <li><a href="/product/category/1">- 목걸이 </a></li>
+                                   <li><a href="/product/category/2">- 귀걸이 </a></li>
+                                   <li><a href="/product/category/3">- 반지 </a></li>
+                                   <li><a href="/product/category/4">- 팔찌,발찌 </a></li>
+                                   <li><a href="/product/category/5">- 기타 </a></li>
+                                </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#SoapSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">비누, 캔들</a>
+
+                                <ul class="collapse list-unstyled" id="SoapSubmenu">
+                                   <li><a href="/product/category/6">- 비누 </a></li>
+                                   <li><a href="/product/category/7">- 캔들 </a></li>
+                                   <li><a href="/product/category/8">- 디퓨져 </a></li>
+
+                                </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#BeautySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">뷰티</a>
+
+                                 <ul class="collapse list-unstyled" id="BeautySubmenu">
+                                    <li><a href="/product/category/9">- 화장품 </a></li>
+                                    <li><a href="/product/category/10">- 향수 </a></li>
+                                 </ul>
+                  </li>
+                  <li class="active">
+                      <a href="#GeneralSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">잡화</a>
+
+                                 <ul class="collapse list-unstyled" id="GeneralSubmenu">
+                                    <li><a href="/product/category/11">- 가방 </a></li>
+                                    <li><a href="/product/category/12">- 신발 </a></li>
+                                    <li><a href="/product/category/13">- 모자 </a></li>
+                                    <li><a href="/product/category/14">- 지갑 </a></li>
+                                 </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#ElecSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">전자기기</a>
+
+                                 <ul class="collapse list-unstyled" id="ElecSubmenu">
+                                    <li><a href="/product/category/15">- 핸드폰 케이스 </a></li>
+                                    <li><a href="/product/category/16">- 에어팟/버즈 케이스 </a></li>
+                                    <li><a href="/product/category/17">- 파우치 </a></li>
+                                 </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#ToySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">완구, 팬시</a>
+
+                                 <ul class="collapse list-unstyled" id="ToySubmenu">
+                                    <li><a href="/product/category/18">- 인형 </a></li>
+                                    <li><a href="/product/category/19">- 문구/팬시 </a></li>
+                                    <li><a href="/product/category/20">- 장난감 </a></li>
+                                 </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#SnackSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">식품</a>
+
+                                 <ul class="collapse list-unstyled" id="SnackSubmenu">
+                                    <li><a href="/product/category/21">- 디저트 </a></li>
+                                    <li><a href="/product/category/22">- 커피/차 </a></li>
+                                    <li><a href="/product/category/23">- 수제반찬 </a></li>
+                                 </ul>
+                  </li>
+
+
+
+
+
+              </ul>
+
+
+          </nav>
+        </div>
+          <div class = "container-fluid col-9">
+            <div class="product_list" style="margin-left: 10px;">
+                <div>
+                  <div class="form-inline">
+                    <div style=""><h3 style="margin: 30px 0 5px 10px;"><b>상품 목록</b></h3></div>
+
+                  </div>
+                </div>
+
+
+                <div>
+                <%
+                var listcount=prodata.length;
+
+                var j=0;
+                var current=page;
+                if(listcount>16){
+                   if(current==1){
+                       listcount=16;
+                   }
+                   else{
+                       if(listcount>current*16){
+                          listcount=current*16;
+                          j=listcount-16;
+                       }
+                       else{
+                          j=(current-1)*16;
+                       }
+                   }
+                }
+
+
+                for(var m=0; j + m*4 < listcount && m<4; m++){
+                  %>
+                  <div class="row">
+                    <%
+                  for(var k=0; k<4 && k < listcount-(j+m*4); k++){
+
+                    %><div class="col-3" style="width: 250px; height: 400px; overflow: hidden;">
+                          <div class="p-2 bd-highlight">
+                            <div class="row-1" style="">
+                              <img class="img-fluid" src="<%=prodata[j+m*4+k].productImg%>" class="align-self-start mr-3" alt="상품"
+                              style="width: 100%; height: 200px; overflow: hidden;">
+                            </div>
+                            <div class="row-3">
+                              <center><p style="font-size: 16px; color: #000000; margin-bottom: 0px;"><b><%=prodata[j+m*4+k].productName%></b></p>
+                              </center><center><p style="font-size: 14px;">판매가 <%=prodata[j+m*4+k].price%> / 최저가 <%=prodata[j+m*4+k].minPrice%></p>
+                              </center>
+                              <div class="form-inline" style="width: 100%">
+                                <form action="/product/detail" role="form" method="post">
+                                  <div class="form-group" style="width: 100%">
+                                    <input type="hidden" name="productNum" value="<%=prodata[j+m*4+k].productNum%>"/>
+                                    <input type="submit" class="btn btn-secondary" value="상품정보"/>
+                                  </div>
+                                </form>
+                              &nbsp;
+                                <form action="/shop/info" method="post">
+                                  <div class="form-group" style="width: 100%">
+                                    <input type="hidden" name="shopNum" value="<%=prodata[j+m*4+k].shopNum%>"/>
+                                    <input type="submit" class="btn btn-secondary" value="상점정보"/>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                       </div>
+                    <%}%>
+                  </div>
+                  <%}%>
+                </div>
+            </div>
+          </div> <!--content -->
+          </div> <!-- wrapper -->
+
+
+
+  <p> <p> <p> <p>
+    <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/product/all/<%= previous %>" tabindex="-1">이전</a>
+      </li>
+      <% for(var j = 0; j < prodata.length / page_num; j++){  %>
+        <li class="page-item"><a class="page-link" href="/product/all/<%= j + 1 %>"><%= j + 1 %></a></li>
+      <% } %>
+      <li class="page-item">
+        <a class="page-link" href="/product/all/<%= next %>">다음</a>
+      </li>
+    </ul>
+    </nav>

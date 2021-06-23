@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="/comm/info/1">공지사항</a></li>
+      <li class="nav-item"><a class="nav-link" href="/comm/review/list/1">리뷰게시판</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><small>포토리뷰</small></a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><small>일반리뷰</small></a></li>
+    </ul>
+    </div>
+  </div>
+<div class="col-sm-10">
+  <div class="caro row">
+    <div id="demo" class="caro1 carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/images/main2.png" alt="Los Angeles" width="1000" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/main4.png" alt="Chicago" width="1000" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="/images/main5.png" alt="New York" width="1000" height="500">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="info container p-3 my-3 border">
+        <table class="table">
+          <tbody>
+              <% for(var i=0;i < 5;i++) { %>
+            <tr>
+              <td><p style="display:inline"><%= info[i].infoNum %></p>
+              </td>
+              <td><a href="/comm/info/1"><p style="position: absolute; left:100px; display:inline"><%= info[i].infoName %></p>
+              </a></td>
+              <td><p style="position: absolute; right:120px; display:inline"><%= info[i].infoDATE %></p>
+              </td>
+              <td><p style="position: absolute; right:40px; display:inline"><%= info[i].hit %></p></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-6" style="padding:inherit">
+      <div class="info container p-3 my-3 border"style="float: left;width: 90%;">
+        <table class="table">
+          <tbody>
+              <% for(var i=0;i < 5;i++) { %>
+            <tr>
+              <td style="width:10px"><p style="display:inline"><%= i+1 %></p>
+              </td>
+              <td style="width:30px;"><img src="/images/review/<%=review[i].reviewImg%>"style="height:25px; width:25px;" alt=""></td>
+
+              <td><a href="/comm/review/list/1"><p style="position: absolute; left:100px; display:inline"><%= review[i].reviewMent %></p>
+              </a></td>
+              <td><p style="position: absolute; right:120px; display:inline"><%= review[i].reviewDATE %></p>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>      </div>
+    </div>
+  </div>
+  </div>
+  </div>

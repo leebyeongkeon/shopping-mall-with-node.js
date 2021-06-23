@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<script language="javascript">
+   $(document).ready(function() {
+     $("#checkAll").click(function(){
+           if ($("#checkAll").is(':checked')) {
+               $("input[name=info]").prop("checked", true);
+           } else {
+               $("input[name=info]").prop("checked", false);
+           }
+         });
+
+
+       $(".checkbox1").click(function(){
+           if($("input[name=info]:checked").length == 3){
+             $("#checkAll").prop("checked", true);
+           }else{
+             $("#checkAll").prop("checked", false);
+           }
+         });
+       });
+</script>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-2">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>마이페이지</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+
+        <li class="active">
+          <a href="#memberInfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">개인 정보</a>
+            <ul class="collapse list-unstyled" id="memberInfo">
+              <li><a href="#">- 회원정보 수정/탈퇴 </a></li>
+            </ul>
+        </li>
+        <li class="active">
+          <a href="#memberOrder" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">주문/배송</a>
+            <ul class="collapse list-unstyled" id="memberOrder">
+              <li><a href="#">- 장바구니 </a></li>
+              <li><a href="/order/list">- 주문/배송 조회 </a></li>
+            </ul>
+        </li>
+        <li class="active">
+          <a href="#memberBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">게시물 관리</a>
+            <ul class="collapse list-unstyled" id="memberBoard">
+              <li><a href="/users/review/list/1">- 리뷰 </a></li>
+                <li><a href="/service/mallenquiry/list/1">- 문의 내역 </a></li>
+            </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+<div class="col-sm-10">
+  <div class="container" style="margin-top:40px;">
+    <form action="" id="frm" method="post">
+      <button type="submit">삭제</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" class="checkbox1 form-check-input" id="checkAll" name="optionall" value="something" ></th>
+            <th> 글번호 </th>
+            <th> 이미지 </th>
+            <th> 글내용 </th>
+            <th> 작성 날짜 </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+               if(i > length){
+                   i++;
+               }else{
+
+               %>
+          <tr>
+            <td>
+              <div class="form-check">
+                <label class="form-check-label" for="check<%= i %>">
+                <input type="checkbox" class="checkbox1 form-check-input" id="check<%= i %>" name="info" value="<%=review[i].reviewNum%>"></label>
+              </div>
+            </td>
+            <td style="margin-left:5px;"> <%= review[i].reviewNum %> </td>
+            <td><a href="/comm/review/detail?id=<%=review[i].reviewNum%>"><img class="img-fluid" src="/images/review/<%= review[i].reviewImg %>" style="height:50px; width:50px;"></td></a>
+            <td><a href="/comm/review/detail?id=<%=review[i].reviewNum %>"><%= review[i].reviewMent %> </td></a>
+            <td> <%= review[i].reviewDATE %> </td>
+          </tr>
+          <% }} %>
+        </table>
+      </form>
+      </div>
+
+  <hr/>
+  <p>
+  <nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/users/review/list/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+    </li>
+    <% for(var j = 0; j < review.length / page_num; j++){  %>
+      <li class="page-item"><a class="page-link" href="/users/review/list/<%= j + 1 %>"><%= j + 1 %></a></li>
+    <% } %>
+    <li class="page-item">
+      <a class="page-link" href="/users/review/list/<%= next %>">다음</a>
+    </li>
+  </ul>
+</nav>
+
+  </div>
+  </div>
+</div>

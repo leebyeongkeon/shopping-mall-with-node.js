@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+  <link rel="stylesheet" href="/stylesheets/style2.css">
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+        });
+      });
+      $('.js-slick-carousel').slick(slickSettings);  // reinitialization
+      $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+      $( window ).resize(handleResize);
+      function modifyMem(){
+        window.open('modifyuser','modi','width=600,height=300,top=100,left=400');
+      }
+    </script>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+  <div class="wrapper">
+
+
+
+      <div class="col-sm-2">
+        <div class="sidebar container p-3 my-3 border">
+          <ul class="nav flex-column">
+            <h5>주문 관리 </h5>
+            <li class="nav-item"><a class="nav-link" href="/shop">상점 정보</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+          </ul>
+        </div>
+      </div>
+
+          <hr>
+          <div class="container">
+            <a class="btn btn-default" href="#">주문 내역 조회</a>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th> 주문번호 </th>
+                    <th> 송장번호 </th>
+                    <th> 주문상품 </th>
+                    <th> 배송업체 </th>
+                    <th> 주문 날짜 </th>
+                    <th> 배송예정일 </th>
+                    <th> 배송상태 </th>
+                    <!-- <th> 내역삭제 </th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i = 0; i < orderdata.length; i++){  %>
+                  <tr>
+                    <td> <%= orderdata[i].orderNum %> </td>
+                    <td> <a class="btn btn-default" href="/order/shopdetail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].deliveryNum %> </td>
+                    <td> <a class="btn btn-default" href="/order/shopdetail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].orderProductName %> </td>
+                    <td> <a class="btn btn-default" href="/order/shopdetail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].deliveryCompany %> </td>
+                    <td> <a class="btn btn-default" href="/order/shopdetail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].orderDate %> </td>
+                    <td> <a class="btn btn-default" href="/order/shopdetail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].deliveryDate %> </td>
+                    <td> <a class="btn btn-default" href="/order/shopdetail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderArray[i]%></a> </td>
+                    <!-- <td> <a class="btn btn-default" href="/order/cancel/<%= orderdata[i].orderNum %>">삭제</td> -->
+                  </tr>
+                  <% } %>
+                </table>
+              </div>
+</div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <script language="javascript">
+      function validate() {
+         let item = document.getElementById("title").value;
+         if (item == '') {
+           alert("공지 제목이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+      }
+
+      $(document).ready(function() {
+        bsCustomFileInput.init();
+      })
+    </script>
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/faq">FAQ</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/faq">카테고리별 FAQ</a></li>
+      <h5 style="margin-left:15px">1:1문의</h5>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/mallenquiry/list/1">문의내역 확인하기</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/mallenquiry/new">문의하기</a></li>
+      <h5 style="margin-left:15px">입점문의</h5>
+      <li class="nav-item"><a class="nav-link text-secondary" href="/service/openshop">입점 문의하기</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary" href="#">입점문의 게시판</a></li>
+
+  </ul>
+    </div>
+  </div>
+<div class="col-sm-10">
+  <div class="openshop container">
+    <% for(var i = 0; i<Detail.length; i++) {
+      if(Detail[i].enquiryNum == id){ %>
+
+    <h2>1:1문의 수정</h2>
+    <hr>
+    <form action="/service/mallenquiry/update?id=<%=id%>" name="infoAdd" onsubmit="return validate()" method="POST" enctype="text/html" class="was-validated">
+      <!-- enctype="text/html" -->
+        <!-- 공지번호를 채울경우 해당 번호로 DB에 공지가 삽입 아니면 autoincrement -->
+         <div class="form-group">
+           <label for="title">제목</label>
+           <input type="text" class="os form-control" id="title" name="title" value="<%=Detail[i].enquiryTitle%>" required>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="intro">내용</label>
+           <input type="text" class="intro form-control" id="intro" name="intro" value="<%=Detail[i].writerMent %>" required>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback"></div>
+         </div>
+         <input type="hidden" name="_method" value="put">
+         <button type="submit" class="btn btn-primary">등록</button>
+     </form>
+     <% }} %>
+
+  </div>
+</div>

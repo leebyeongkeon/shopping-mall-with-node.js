@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+      <div class="jumbotron" style="width:800px; margin:auto">
+
+        <div class="" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+          <div class="starter-template">
+            <h4> 상품 정보 수정</h4> <hr>
+          </div>
+
+          <form method="post" action="/adminprod/produpdate" enctype="multipart/form-data">
+            <!-- <input type="hidden" name="_method" value="put"/> -->
+            <input type="hidden" name="imgFlag" id="imgFlag" value="0"/>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <div class="form-group">
+                  <label for="" >상품번호</label>
+                  <input type="int" class="form-control" name="productNum" id="productNum" value="<%=productDetail[0].productNum%>" readonly >
+                </div>
+                <div class="form-group">
+                  <label for="">상점번호</label>
+                  <input type="int" class="form-control" name="shopNum" id="shopNum" value="<%=productDetail[0].shopNum%>">
+                </div>
+                <div class="form-group">
+                  <label for="">분류</label>
+                    <select class="form-control" id="bigCate" name="bigCate">
+                      <option id="bigCate1" value="" selected="selected">분류</option>
+                      <option id="bigCate2" value="액세서리">액세서리</option>
+                      <option id="bigCate3" value="비누, 캔들">비누, 캔들</option>
+                      <option id="bigCate4" value="뷰티">뷰티</option>
+                      <option id="bigCate5" value="잡화">잡화</option>
+                      <option id="bigCate5" value="전자기기">전자기기</option>
+                      <option id="bigCate6" value="완구, 팬시">완구, 팬시</option>
+                      <option id="bigCate7" value="식품">식품</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="">세부</label>
+                    <select class="form-control" id="midCate" name="midCate">
+                    </select>
+                </div>
+
+                <label for="">상품이미지 (적정사이즈:250x180)</label>
+                <div class="form-group">
+                   <input type="file" class="custom-file-input2" id="shop_product" aria-describedby="entry2" accept="image/*" name="photo">
+                </div>
+              </div>
+
+              <div class="form-goup col-md-6">
+                <div class="form-group">
+                  <label for="">상품명</label>
+                  <input type="text" class="form-control" name="productName" id="productName" value="<%=productDetail[0].productName%>" >
+                </div>
+                <div class="form-group">
+                  <label for="">상점명</label>
+                  <input type="text" class="form-control" name="shopName" id="shopName" value="<%=productDetail[0].shopName%>" >
+                </div>
+                <div class="form-group">
+                  <label for="">가격</label>
+                  <input type="int" class="form-control" name="price" id="price" value="<%=productDetail[0].price%>" >
+                </div>
+                <div class="form-group">
+                  <label for="">최소 가격</label>
+                  <input type="int" class="form-control" name="minPrice" id="minPrice" value="<%=productDetail[0].minPrice%>" >
+                </div>
+                <div class="form-group">
+                  <label for="">상품 소개글</label>
+                  <input type="text" class="form-control" name="productMent" id="productMent" value="<%=productDetail[0].productMent%>" >
+                </div>
+                <label for="">세부이미지 (적정사이즈:250x180)</label>
+                <div class="form-group">
+                   <input type="file" class="custom-file-input2" id="shop_detail" width=10px aria-describedby="entry2" accept="image/*" name="photo">
+                </div>
+              </div>
+            </div>
+            <hr>
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="수정" style="float:right">
+            <button type="button" onclick="location.href='/adminprod/list/1'">목록</button>
+          </form>
+        </div>
+
+      </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->

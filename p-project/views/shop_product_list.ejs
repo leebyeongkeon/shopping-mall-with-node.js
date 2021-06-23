@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+ <!--  Content (배너이미지) 부분 -->
+  <!-- <div> <img src="/images/admin_banner2.png" class="img-fluid" alt="배너이미지" width="100%"> </div> -->
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <!-- <div class="container" style="border: solid 20px white; border-radius: 1px"> -->
+     <!-- <div class="panel panel-default"> -->
+   	  <!-- <div class="panel-heading">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">쇼핑몰</li>
+            <li class="breadcrumb-item">판매자</li>
+            <li class="breadcrumb-item active" aria-current="page">상품관리</li>
+          </ol>
+        </nav>
+   	  </div> -->
+
+      <!-- <hr> -->
+<!-- <script language='javascript'>
+ onSubmit="if(confirm('삭제하시겠습니까?')){submit();}"
+</script> -->
+  <div class="row">
+      <div class="col-sm-2">
+        <div class="sidebar container p-3 my-3 border">
+          <ul class="nav flex-column">
+            <h5>상품 관리 </h5>
+            <li class="nav-item"><a class="nav-link" href="/shop">상점 정보</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container col-sm-10">
+        <form action="/shop/product" method="post">
+          <input type="hidden" name="_method" value="delete"/>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <!-- <th><input type="submit" value="삭제" id="checkDelete" style=" background: #00000000; border-color: #00000000;"/> -->
+              </th>
+                <!-- <th><input type="checkbox" class="checkbox1 form-check-input" id="checkAll" name="optionall" value="something" ></label></th> -->
+                <th> 상품번호 </th>
+                <th> 상품명 </th>
+                <th> 상품가 </th>
+                <th> 분류 </th>
+                <th> 세부 </th>
+                <th> 삭제 </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tbody>
+                <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+                     if(i > length){
+                         i++;
+                     }else{
+                     %>
+              <tr>
+                <!-- <td>
+                  <div class="form-check">
+                    <label class="form-check-label" for="check<%= i %>">
+                    <input type="radio" class="checkbox1 form-check-input"  name="checkedProd" value="<%=prodata[i].productNum%>"></label>
+                  </div>
+                </td> -->
+                <td style="cursor:pointer;" onClick="location.href='/shop/produpdate/<%=prodata[i].productNum%>'"> <%= prodata[i].productNum %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/produpdate/<%=prodata[i].productNum%>'"> <%= prodata[i].productName %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/produpdate/<%=prodata[i].productNum%>'"> <%= prodata[i].price %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/produpdate/<%=prodata[i].productNum%>'"> <%= prodata[i].bigCate %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/produpdate/<%=prodata[i].productNum%>'"> <%= prodata[i].midCate %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/product/<%=prodata[i].productNum%>'"> 삭제 </td>
+                <!-- <td style="cursor:pointer;" onClick="location.href='/shop/produpdate/<%=prodata[i].productNum%>'"> <%= prodata[i].shopName %> </td> -->
+
+              </tr>
+              <% }} %>
+            </table>
+          </form>
+          <a class="btn btn-default" href="/shop/product">상품등록</a>
+          </div>
+</div>
+  <p>
+    <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/shop/product_list/<%= previous %>" tabindex="-1">이전</a>
+      </li>
+      <% for(var j = 0; j < prodata.length / page_num; j++){  %>
+        <li class="page-item"><a class="page-link" href="/shop/product_list/<%= j + 1 %>"><%= j + 1 %></a></li>
+      <% } %>
+      <li class="page-item">
+        <a class="page-link" href="/shop/product_list/<%= next %>">다음</a>
+      </li>
+    </ul>
+    </nav>

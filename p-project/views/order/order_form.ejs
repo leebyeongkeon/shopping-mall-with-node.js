@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:800px; margin:auto">
+
+    <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template">
+        <h4> 주문등록</h4> <hr>
+      </div>
+
+    <form name=join onsubmit="return validate()" method=post action="/adminod/order" enctype="multipart/form-data">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">주문번호</label>
+            <input type="int" class="form-control" name="orderNum" id="orderNum" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">주문상품번호</label>
+            <input type="int" class="form-control" name="orderProduct" id="orderProduct" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">구매량</label>
+            <input type="int" class="form-control" name="orderQuantity" id="orderQuantity" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">구매자 회원번호</label>
+            <input type="int" class="form-control" name="buyerNum" id="buyerNum" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">택배사</label>
+            <input type="text" class="form-control" name="deliveryCompany" id="deliveryCompany" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">수취인</label>
+            <input type="text" class="form-control" name="receiver" id="receiver" placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">연락처</label>
+            <input type="text" class="form-control" name="orderTel" id="orderTel" placeholder="">
+          </div>
+
+         <div class="form-group">
+           <label for="exampleInputPassword2">주문날짜</label>
+           <input type="date" class="form-control" name="orderDate" id="orderDate" placeholder="">
+         </div>
+
+       </div>
+
+       <div class="form-goup col-md-6">
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">송장번호</label>
+           <input type="int" class="form-control" name="deliveryNum" id="deliveryNum" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">주문 상품명</label>
+           <input type="text" class="form-control" name="orderProductName" id="orderProductName" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">옵션</label>
+           <input type="int" class="form-control" name="optValNum" id="optValNum" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">구매자 ID</label>
+           <input type="text" class="form-control" name="buyerId" id="buyerId" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송지</label>
+           <input type="text" class="form-control" name="orderAddr" id="orderAddr" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송 메세지</label>
+           <input type="text" class="form-control" name="orderMessage" id="orderMessage" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송상태</label>
+           <input type="int" class="form-control" name="orderStatus" id="orderStatus" placeholder="">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송예정일</label>
+           <input type="date" class="form-control" name="deliveryDate" id="deliveryDate" placeholder="">
+         </div>
+
+       </div>
+     </div>
+
+         <hr>
+         <button type="submit" class="btn btn-primary">상품등록</button>
+      </form>
+     </div>
+     </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->

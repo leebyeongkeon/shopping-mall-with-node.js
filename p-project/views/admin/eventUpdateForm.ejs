@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+    <script language="javascript">
+      function validate() {
+         let item = document.getElementById("title").value;
+         if (item == '') {
+           alert("공지 제목이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+      }
+
+      $(document).ready(function() {
+        bsCustomFileInput.init();
+      })
+    </script>
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+      <ul class="nav flex-column">
+        <h5>게시판 관리</h5>
+        <li class="nav-item"><a class="nav-link" href="/adminbulletin/list/1">공지사항</a></li>
+        <li class="nav-item"><a class="nav-link" href="/adminbulletin/event/list/1">이벤트</a></li>
+        <li class="nav-item"><a class="nav-link" href="/adminbulletin/faq/list/1">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="/adminbulletin/enquiry/list/1">1:1문의</a></li>
+      </ul>
+    </div>
+  </div>
+<div class="col-sm-10">
+  <div class="openshop container">
+    <% for(var i = 0; i<Detail.length; i++) {
+      if(Detail[i].eventNum == id){ %>
+    <h2>이벤트 수정</h2>
+    <hr>
+    <form action="/adminbulletin/event/update?id=<%=id%>" name="infoAdd" onsubmit="return validate()" method="POST" enctype="multipart/form-data" class="was-validated">
+      <!-- enctype="text/html" -->
+        <div class="form-group">
+          <label for="title">이벤트 번호</label>
+          <input type="text" class="os form-control" id="num" name="num" value="<%=Detail[i].eventNum%>">
+        </div>
+        <!-- 공지번호를 채울경우 해당 번호로 DB에 공지가 삽입 아니면 autoincrement -->
+         <div class="form-group">
+           <label for="title">제목</label>
+           <input type="text" class="os form-control" id="title" name="title" value="<%=Detail[i].eTitle%>" required>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="manager">담당자명</label>
+           <input type="text" class="os form-control" id="manager" name="manager" value="<%=Detail[i].manager%>" required>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="startdate">시작일</label>
+           <input type="date" class="os form-control" id="startdate" name="startdate" required>
+         </div>
+         <div class="form-group">
+           <label for="enddate">마감일</label>
+           <input type="date" class="os form-control" id="enddate" name="enddate" required>
+         </div>
+         <div class="form-group">
+           <label for="intro">내용</label>
+           <input type="text" class="intro form-control" id="intro" name="intro" value="<%=Detail[i].eventMent%>" required>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback"></div>
+         </div>
+         <div class="form-group">
+           <label for="reimg">대표이미지</label>
+           <input type="file" class="file form-control" id="reimg" name="reimg" required>
+         </div>
+         <div class="form-group">
+           <label for="img">상세이미지</label>
+           <input type="file" class="file form-control" id="img" name="img" required>
+         </div>
+         <input type="hidden" name="_method" value="put">
+         <button type="submit" class="btn btn-primary">수정</button>
+     </form>
+     <% }} %>
+  </div>
+</div>

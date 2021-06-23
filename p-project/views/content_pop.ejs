@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/stylesheets/style2.css">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+    $('.js-slick-carousel').slick(slickSettings);
+
+    // reinitialization
+    $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+
+    $( window ).resize(handleResize);
+</script>
+
+
+<!--  Content (배너이미지) 부분 -->
+  <!-- -->
+  <div class="carou row">
+    <div id="demo" class="caro1 carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="<%= banner1 %>" alt="banner" width="100%" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="<%= banner2 %>" alt="banner" width="100%" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="<%= banner3 %>" alt="banner"  height="500">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </div>
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+  <div class="wrapper row">
+    <div class="col-2">
+      <nav id="sidebar">
+              <div class="sidebar-header">
+                  <h3>상품 조회</h3>
+              </div>
+
+              <ul class="list-unstyled components">
+                  <p>카테고리</p>
+                  <li class="active">
+                      <a href="#AccSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">액세서리</a>
+
+                                <ul class="collapse list-unstyled" id="AccSubmenu">
+                                   <li><a href="#">- 목걸이 </a></li>
+                                   <li><a href="#">- 귀걸이 </a></li>
+                                   <li><a href="#">- 반지 </a></li>
+                                   <li><a href="#">- 팔찌,발찌 </a></li>
+                                    <li><a href="#">- 기타 </a></li>
+                                </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#SoapSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">비누, 캔들</a>
+
+                                <ul class="collapse list-unstyled" id="SoapSubmenu">
+                                   <li><a href="#">- 비누 </a></li>
+                                   <li><a href="#">- 캔들 </a></li>
+                                   <li><a href="#">- 디퓨져 </a></li>
+
+                                </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#BeautySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">뷰티</a>
+
+                                 <ul class="collapse list-unstyled" id="BeautySubmenu">
+                                    <li><a href="#">- 화장품 </a></li>
+                                    <li><a href="#">- 향수 </a></li>
+                                 </ul>
+                  </li>
+                  <li class="active">
+                      <a href="#GeneralSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">잡화</a>
+
+                                 <ul class="collapse list-unstyled" id="GeneralSubmenu">
+                                    <li><a href="#">- 가방 </a></li>
+                                    <li><a href="#">- 신발 </a></li>
+                                    <li><a href="#">- 모자 </a></li>
+                                    <li><a href="#">- 지갑 </a></li>
+                                 </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#ElecSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">전자기기</a>
+
+                                 <ul class="collapse list-unstyled" id="ElecSubmenu">
+                                    <li><a href="#">- 핸드폰 케이스 </a></li>
+                                    <li><a href="#">- 에어팟/버즈 케이스 </a></li>
+                                    <li><a href="#">- 파우치 </a></li>
+                                 </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#ToySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">완구, 팬시</a>
+
+                                 <ul class="collapse list-unstyled" id="ToySubmenu">
+                                    <li><a href="#">- 인형 </a></li>
+                                    <li><a href="#">- 문구/팬시 </a></li>
+                                    <li><a href="#">- 장난감 </a></li>
+                                 </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#SnackSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">식품</a>
+
+                                 <ul class="collapse list-unstyled" id="SnackSubmenu">
+                                    <li><a href="#">- 디저트 </a></li>
+                                    <li><a href="#">- 커피/차 </a></li>
+                                    <li><a href="#">- 수제반찬 </a></li>
+                                 </ul>
+                  </li>
+
+              </ul>
+
+          </nav>
+        </div>
+
+ <div class = "container-fluid col-9">
+   <div class="product_list" style="margin-left: 10px;">
+       <div>
+         <div class="form-inline">
+           <div style=""><h3 style="margin: 30px 0 5px 10px;"><b>인기 상품 BEST 8</b></h3></div>
+           <div style="position: absolute; right: 15px;">
+
+
+           </div>
+         </div>
+       </div>
+
+       <div>
+       <% var listcount=prodata.length;
+          for(var j=0;j*4<listcount&&j<4;j++){ %>
+
+         <div class="row">
+
+           <% for(var k=0;k<4&&k<listcount-j*4;k++){ %>
+
+             <div class="col-3" style="width: 250px; height: 400px;margin-top: 20px; overflow: hidden;">
+                 <div class="p-2 bd-highlight">
+                   <div class="row-1" style="">
+                     <img class="img-fluid" src="<%=prodata[j*4+k].productImg%>" class="align-self-start mr-3" alt="상품" style="width: 100%; height: 200px; overflow: hidden;">
+                   </div>
+                   <div class="row-3">
+                     <center><p style="font-size: 16px; color: #000000; margin-bottom: 0px;"><b><%=prodata[j*4+k].productName%></b></p></center>
+                     <center><p style="font-size: 14px;">판매가 <%=prodata[j*4+k].price%> / 최저가 <%=prodata[j*4+k].minPrice%></p></center>
+                     <div class="form-inline" style="width: 100%">
+                       <form action="/product/detail" role="form" method="post">
+                         <div class="form-group" style="width: 100%">
+                           <input type="hidden" name="productNum" value="<%=prodata[j*4+k].productNum%>"/>
+                           <input type="submit" class="btn btn-secondary" value="상품정보"/>
+                         </div>
+                       </form>
+                     &nbsp;
+                       <form action="/shop/info" method="post">
+                         <div class="form-group" style="width: 100%">
+                           <input type="hidden" name="shopNum" value="<%=prodata[j*4+k].shopNum%>"/>
+                           <input type="submit" class="btn btn-secondary" value="상점정보"/>
+                         </div>
+                       </form>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+           <%}%>
+         </div>
+         <%}%>
+       </div>
+   </div>
+ </div> <!--content -->
+ </div> <!-- wrapper -->

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:800px; margin:auto">
+      <% for(var i = 0; i<memberDetail.length; i++) {
+        if(memberDetail[i].memberNum == memberNum){ %>
+
+    <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template">
+        <h4> 회원 정보 수정</h4> <hr>
+      </div>
+
+    <form name=join method="POST" action="/adminmem/detail?memberNum=<%=memberNum%>" enctype="text/html">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">회원번호</label>
+            <input type="int" class="form-control" name="memberNum" id="memberNum" aria-describedby="emailHelp" value="<%=memberDetail[i].memberNum%>" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">ID</label>
+            <input type="text" class="form-control" name="id" id="id" value="<%=memberDetail[i].id%>">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">TEL</label>
+            <input type="text" class="form-control" name="tel" id="tel" value="<%=memberDetail[i].tel%>">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">성별</label>
+            <input type="text" class="form-control" name="gender" id="gender" value="<%=memberDetail[i].gender%>">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">회원권한</label>
+            <input type="int" class="form-control" name="per" id="per" value="<%=memberDetail[i].per%>">
+          </div>
+
+          <div class="form-group">
+            <p> 문자 알림 설정 </p>
+            <label  for="exampleInputsmsRec" ><input type="radio" name="smsRec" id="smsRec" value=0 > 수신 안함 &nbsp&nbsp  </label>
+            <label for="exampleInputemailRec" ><input type="radio" name="smsRec" id="smsRec" value=1 > 수신함</label>
+          </div>
+
+       </div>
+
+       <div class="form-goup col-md-6">
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">회원이름</label>
+           <input type="int" class="form-control" name="name" id="name" value="<%=memberDetail[i].name%>">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">PW</label>
+           <input type="text" class="form-control" name="pw" id="pw" value="<%=memberDetail[i].pw%>">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">Email</label>
+           <input type="text" class="form-control" name="email" id="email" value="<%=memberDetail[i].email%>">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">생년월일</label>
+           <input type="date" class="form-control" name="birth" id="birth" value="<%=memberDetail[i].birth%>">
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">POINT</label>
+           <input type="int" class="form-control" name="point" id="point" value="<%=memberDetail[i].point%>">
+         </div>
+
+         <div class="form-group">
+           <p> 이메일 알림 설정 </p>
+           <label  for="exampleInputsmsRec" ><input type="radio" name="emailRec" id="emailRec" value=0 > 수신 안함 &nbsp&nbsp  </label>
+           <label for="exampleInputemailRec" ><input type="radio" name="emailRec" id="emailRec" value=1 > 수신함</label>
+         </div>
+
+       </div>
+     </div>
+
+         <hr>
+         <input type="hidden" name="_method" value="put">
+         <button type="submit" style="float:right"><%=button1%></button>
+         <button type="button" onclick="location.href='/adminmem/list/1'">목록</button>
+      </form>
+     </div>
+     <% }} %>
+     </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->

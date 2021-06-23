@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+    <script language="javascript">
+      function validate() {
+        let pw1 = document.getElementById("pw1").value;
+        let pw2 = document.getElementById("pw2").value;
+        let id = document.getElementById("id").value;
+
+        if (pw1 != pw2) {
+          alert("비밀번호가 일치하지 않습니다.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:600px; margin:auto">
+
+    <div class="bm-login-form" style='width:500px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template" >
+        <h5 style="font-weight: bold" > 가입 정보 입력 </h5> <hr>
+      </div>
+
+      <form name=join onsubmit="return validate()" method=post action="/users/reg">
+        <div class="form-group">
+          <label for="exampleInputName">이름</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력하세요">
+        </div>
+
+        <label for="exampleId1" style="font-weight: bold">아이디</label>
+        <div class="form-group-id">
+          <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" >
+          <button type="button" class="btn btn-secondary" id="idCheck">아이디 중복 확인</button>
+          <p>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPW">비밀번호</label>
+          <input type="password" class="form-control" name="pw1" id="pw1" placeholder="비밀번호를 입력하세요">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPW2">비밀번호 확인</label>
+          <input type="password" class="form-control" name="pw2" id="pw2" placeholder="비밀번호 확인">
+        </div>
+
+        <label for="exampleemail" style="font-weight: bold">이메일</label>
+        <div class="form-group-email">
+          <input type="text" class="form-control" name="email1" id="email1" placeholder="abcd"> @
+          <input type="text" class="form-control" name="email2" id="email2" placeholder="xxxx.xxx" >
+          <p>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputbirth">생년월일</label>
+          <input type="date" class="form-control" name="birth" id="birth" placeholder="생년월일을 선택해주세요.">
+        </div>
+
+        <div class="form-group">
+          <p> 성별 </p>
+          <label for="exampleInputgender" ><input type="radio" name="gender" id="gender" value="M"> 남&nbsp&nbsp</label>
+          <label for="exampleInputgender" ><input type="radio" name="gender" id="gender" value="W"> 여</label>
+        </div>
+
+        <label for="exampleInputtel">연락처</label>
+          <div class="form-group-tel">
+          <input type="text" class="form-control" name="tel1" id="tel1" placeholder="010" >
+          -
+          <input type="text" class="form-control" name="tel2" id="tel2" placeholder="1234" >
+          -
+          <input type="text" class="form-control" name="tel3" id="tel3" placeholder="5678" >
+          <p>
+        </div>
+
+        <div class="form-group">
+          <p> 문자 알림 설정 </p>
+          <label  for="exampleInputsmsRec" ><input type="radio" name="smsRec" id="smsRec" value=0 > 수신 안함 &nbsp&nbsp  </label>
+          <label for="exampleInputemailRec" ><input type="radio" name="smsRec" id="smsRec" value=1 > 수신함</label>
+        </div>
+        <div class="form-group">
+          <p> 이메일 알림 설정 </p>
+          <label  for="exampleInputsmsRec" ><input type="radio" name="emailRec" id="emailRec" value=0 > 수신 안함 &nbsp&nbsp  </label>
+          <label for="exampleInputemailRec" ><input type="radio" name="emailRec" id="emailRec" value=1 > 수신함</label>
+        </div>
+
+        <hr>
+        <button type="submit" class="btn btn-primary">회원가입</button>
+      </form>
+    </div>
+    </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->

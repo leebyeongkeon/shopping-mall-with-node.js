@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+  <link rel="stylesheet" href="/stylesheets/style2.css">
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+        });
+      });
+      $('.js-slick-carousel').slick(slickSettings);  // reinitialization
+      $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+      $( window ).resize(handleResize);
+      function modifyMem(){
+        window.open('modifyuser','modi','width=600,height=300,top=100,left=400');
+      }
+    </script>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+  <div class="wrapper">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>마이페이지</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+
+        <li class="active">
+          <a href="#memberInfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">개인 정보</a>
+            <ul class="collapse list-unstyled" id="memberInfo">
+              <li><a href="#">- 회원정보 수정/탈퇴 </a></li>
+            </ul>
+        </li>
+        <li class="active">
+          <a href="#memberOrder" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">주문/배송</a>
+            <ul class="collapse list-unstyled" id="memberOrder">
+
+              <li><a href="/order/list">- 주문/배송 조회 </a></li>
+            </ul>
+        </li>
+        <li class="active">
+          <a href="#memberBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">게시물 관리</a>
+            <ul class="collapse list-unstyled" id="memberBoard">
+              <li><a href="/comm/review/list/1">- 리뷰 </a></li>
+                <li><a href="/service/mallenquiry/list/1">- 문의 내역 </a></li>
+            </ul>
+        </li>
+      </ul>
+    </nav>
+
+
+          <hr>
+          <div class="container">
+            <a class="btn btn-default" href="#">주문 내역 조회</a>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th> 주문번호 </th>
+                    <th> 송장번호 </th>
+                    <th> 주문상품 </th>
+                    <th> 배송업체 </th>
+                    <th> 주문 날짜 </th>
+                    <th> 배송예정일 </th>
+                    <th> 배송상태 </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i = 0; i < orderdata.length; i++){  %>
+                  <tr>
+                    <td> <%= orderdata[i].orderNum %> </td>
+                    <td> <a class="btn btn-default" href="/order/detail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].deliveryNum %> </td>
+                    <td> <a class="btn btn-default" href="/order/detail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].orderProductName %> </td>
+                    <td> <a class="btn btn-default" href="/order/detail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].deliveryCompany %> </td>
+                    <td> <a class="btn btn-default" href="/order/detail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].orderDate %> </td>
+                    <td> <a class="btn btn-default" href="/order/detail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderdata[i].deliveryDate %> </td>
+                    <td> <a class="btn btn-default" href="/order/detail?orderNum=<%= orderdata[i].orderNum %>"> <%= orderArray[i]%></a> </td>
+                  </tr>
+                  <% } %>
+                </table>
+              </div>
+</div>

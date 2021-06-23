@@ -1,0 +1,89 @@
+
+.info{
+  margin-top: 30px;
+  width: 100%;
+}
+#accordion{
+  margin-right: 30px
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+ .carousel-inner img {
+       width: 100%;
+       height: 100%;
+   }
+  .caro{
+    margin-top: 10px;
+    margin-right: 50px;
+  }
+  .carou{
+    width: 100%;
+    margin-left: 0px;
+  }
+  .caro1{
+    width:100%;
+  }
+  .list-group{
+    height: 100%;
+  }
+.boardZone{
+  height: 30px;
+  width: 200px;
+  border: 2px groove #fff;
+  text-align: center;
+}
+.boardlist{
+  border: 2px groove #fff;
+  border-top: none;
+  margin-right: 40px;
+}
+.boardlistbest{
+  border: 2px groove #fff;
+  margin-right: 40px;
+}
+.faq{
+  margin-top: 30px;
+}
+.faqCat{
+  border: 2px groove #fff;
+  border-bottom: none;
+  margin-right: 40px;
+}
+.nav-tabs{
+  border-color: blrgb(172, 174, 190)ack;
+  margin-right: 40px;
+}
+.faqtitle{
+  margin-top: 30px;
+}
+.openshop{
+  margin-top: 40px;
+}
+.intro{
+  height:300px;
+  width: 85%;
+}
+.os{
+  width: 85%;
+}
+.file{
+  border: none;
+  width: 85%;
+}
+
+.sidebar{
+  height:95%;
+}
+.checkbox1{
+  margin-top: none;
+  margin-left: 2px;
+  position:relative;
+}
+#checkAll{
+  margin-left: 21px;
+  margin-top: none;
+  position:relative;
+}

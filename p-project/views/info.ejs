@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="/comm/info/1">공지사항</a></li>
+      <li class="nav-item"><a class="nav-link" href="/comm/review/list/1">리뷰게시판</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">포토리뷰</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">일반리뷰</a></li>
+    </ul>
+    </div>
+  </div>
+<div class="col-sm-10">
+  <div class="container info">
+    <h2>공지사항</h2>
+      <div id="accordion">
+        <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+             if(i > length){
+                 i++;
+             }else{
+             %>
+      <div class="card"  >
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href="#col<%= i %>">
+            <p style="display:inline"><%= infodata[i].infoNum %></p>
+            <p style="position: absolute; left:100px; display:inline"><%= infodata[i].infoName %></p>
+            <p style="position: absolute; right:100px; display:inline"><%= infodata[i].infoDATE %></p>
+            <p style="position: absolute; right:25px; display:inline"><%= infodata[i].hit %></p>
+          </a>
+        </div>
+        <div id="col<%= i %>" class="collapse" data-parent="#accordion">
+          <div class="card-body" id="card<%=i%>">
+            <%= infodata[i].infoMent %>
+        </div>
+      </div>
+      </div>
+      <% }} %>
+  </div>
+  <hr/>
+  <nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/comm/info/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+    </li>
+    <% for(var j = 0; j < infodata.length / page_num; j++){  %>
+      <li class="page-item"><a class="page-link" href="/comm/info/<%= j + 1 %>"><%= j + 1 %></a></li>
+    <% } %>
+    <li class="page-item">
+      <a class="page-link" href="/comm/info/<%= next %>">다음</a>
+    </li>
+  </ul>
+</nav>
+
+  </div>
+  </div>
+</div>

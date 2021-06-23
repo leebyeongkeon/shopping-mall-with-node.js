@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+  <link rel="stylesheet" href="/stylesheets/style2.css">
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+        });
+      });
+      $('.js-slick-carousel').slick(slickSettings);  // reinitialization
+      $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+      $( window ).resize(handleResize);
+      function modifyMem(){
+        window.open('modifyuser','modi','width=600,height=300,top=100,left=400');
+      }
+    </script>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+  <div class="wrapper">
+
+    <div class="col-sm-2">
+      <div class="sidebar container p-3 my-3 border">
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="">상점 정보</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+          <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+
+        </ul>
+      </div>
+    </div>
+
+
+
+
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:800px; margin:auto">
+      <% for(var i = 0; i<orderDetail.length; i++) {
+        if(orderDetail[i].orderNum == orderNum){ %>
+
+    <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template">
+        <h4> 주문수정</h4> <hr>
+      </div>
+
+    <form name=join method="POST" action="/order/send?orderNum=<%=orderNum%>" enctype="text/html">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">주문번호</label>
+            <input type="number" class="form-control" name="orderNum" id="orderNum" aria-describedby="emailHelp" value="<%=orderDetail[i].orderNum%>" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">주문상품번호</label>
+            <input type="number" class="form-control" name="orderProduct" id="orderProduct" value="<%=orderDetail[i].orderProduct%>" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">구매량</label>
+            <input type="number" class="form-control" name="orderQuantity" id="orderQuantity" value="<%=orderDetail[i].orderQuantity%>" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">구매자 회원번호</label>
+            <input type="number" class="form-control" name="buyerNum" id="buyerNum" value="<%=orderDetail[i].buyerNum%>" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">택배사</label>
+            <input type="text" class="form-control" name="deliveryCompany" id="deliveryCompany" value="<%=orderDetail[i].deliveryCompany%>">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">수취인</label>
+            <input type="text" class="form-control" name="receiver" id="receiver" value="<%=orderDetail[i].receiver%>" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">연락처</label>
+            <input type="text" class="form-control" name="orderTel" id="orderTel" value="<%=orderDetail[i].orderTel%>" readonly>
+          </div>
+
+         <div class="form-group">
+           <label for="exampleInputPassword2">주문날짜</label>
+           <input type="date" class="form-control" name="orderDate" id="orderDate" value="<%=orderDetail[i].orderDate%>3" readonly>
+         </div>
+
+       </div>
+
+       <div class="form-goup col-md-6">
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">송장번호</label>
+           <input type="number" class="form-control" name="deliveryNum" id="deliveryNum" value="<%=orderDetail[i].deliveryNum%>" >
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">주문 상품명</label>
+           <input type="text" class="form-control" name="orderProductName" id="orderProductName" value="<%=orderDetail[i].orderProductName%>" readonly>
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">옵션</label>
+           <input type="number" class="form-control" name="optValNum" id="optValNum" value="<%=orderDetail[i].optValNum%>" readonly>
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">구매자 ID</label>
+           <input type="text" class="form-control" name="buyerId" id="buyerId" value="<%=orderDetail[i].buyerId%>" readonly>
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송지</label>
+           <input type="text" class="form-control" name="orderAddr" id="orderAddr" value="<%=orderDetail[i].orderAddr%>" readonly>
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송 메세지</label>
+           <input type="text" class="form-control" name="orderMessage" id="orderMessage" value="<%=orderDetail[i].orderMessage%>" readonly>
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송예정일</label>
+           <input type="date" class="form-control" name="deliveryDate" id="deliveryDate" value="<%=orderDetail[i].deliveryDate%>" readonly>
+         </div>
+
+         <div class="form-group">
+           <label for="exampleInputEmail1">배송상태</label><br>
+        <!--   <input type="number" class="form-control" name="orderStatus" id="orderStatus" value="<%=orderDetail[i].orderStatus%>"> -->
+        <input type="radio" name="orderStatus" id="orderStatus" value=0 checked > 배송 예정 &nbsp&nbsp  </label>
+        <input type="radio" name="orderStatus" id="orderStatus" value=1 > 배송중 &nbsp&nbsp</label>
+        <input type="radio" name="orderStatus" id="orderStatus" value=2 > 배송 완료 &nbsp&nbsp</label>
+        <input type="radio" name="orderStatus" id="orderStatus" value=3 > 주문 취소 </label>
+         </div>
+
+       </div>
+     </div>
+
+         <hr>
+         <input type="hidden" name="_method" value="put">
+         <button type="submit" style="float:right"><%=button3%></button>
+         <button type="button" onclick="location.href='/order/shoplist'">목록</button>
+      </form>
+     </div>
+     <% }} %>
+     </div>
+    </div><!-- /.container -->
+  </div>
+ <!-- Footer 영역 -->

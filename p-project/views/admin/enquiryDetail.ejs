@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<div class="container">
+  <% for(var i = 0; i<Detail.length; i++) {
+    if(Detail[i].enquiryNum == id){ %>
+  <div class="faqtitle">
+    <strong><h2 style="display:inline;"><%= Detail[i].enquiryTitle %></h2></strong>
+      <strong><h5 style="display:inline;"> |  1:1문의</h5></strong>
+    <h7 style="float:right;">작성일자: <%=Detail[i].date%></h7>
+  </div>
+  <hr>
+  <div class="ment">
+    <div class="container" style="height:150px">
+      <p><%= Detail[i].writerMent %></p>
+    </div>
+  </div>
+
+   <% }} %>
+<% for(var i =0 ; i<comment.length; i++){ %>
+   <div class="reply" style="margin-bottom: 10px; margin-top: 50px;height:100px;">
+     <img src="/images/admin.png"  style="height:25px;"alt="">
+    <span class="commentWriter">답변자: <%=comment[i].commentWriter%></span>
+    <span>
+          <form action="/service/mallenquiry/detail?id=<%=id%>" method="post" style="display:inline">
+            <input type="hidden" value="<%=comment[i].commentNum%>" name="num">
+            <input type="hidden" name="_method" value="put">
+              <button type="submit">삭제</button>
+          </form>
+      </span>
+    <span class="commentDATE" style="float:right">답변날짜: <%=comment[i].commentDATE%> </span>
+    <div class="container" style="width:100%; height:100%; margin-top: 8px;border:1px solid black"><pre><%=comment[i].commentMent%></pre></div>
+   </div>
+   <%}%>
+   <div class="replyForm" style="margin-top: 45px;">
+     <table class="table">
+       <tbody>
+           <form action="/service/mallenquiry/detail?id=<%=id%>" method="post" encType="text/html">
+               <tr class="row">
+                   <td class="col-10"><textarea placeholder="답변을 등록하세요. " name="content" class="form-control"></textarea></td>
+                   <td class="col-2">
+                       <button type="submit" style="width:100%; height:60px;">등록</button>
+                   </td>
+               </tr></form>
+       </tbody>
+   </table>
+   </div>
+
+   <hr>
+   <div class="container">
+     <%=admin%><form action="/service/mallenquiry/detail?id=<%=id%>" method="post" style="display: inline; float: right; margin-left: 10px">
+     <input type="hidden" name="_method" value="delete">
+     <button type="<%=buttonType%>" onclick="<%=onclick2%>" class="btn btn-danger"><%=button2%></button>
+     <%=admin%></form>
+   <button type="<%=buttonType%>" onclick="location.href='/service/mallenquiry/update?id=<%=id%>'" class="btn btn-primary"
+     style="display: inline; float:right;"><%=button1%></button>
+
+   <button type="button" onclick="location.href='/adminbulletin/enquiry/list/1'" class="btn btn-primary">목록</button>
+   </div>
+</div>

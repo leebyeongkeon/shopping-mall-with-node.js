@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style2.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/stylesheets/style2.css">
+<script type="text/javascript">
+ function popclose(){
+   window.close();
+
+ }
+
+
+</script>
+
+<meta charset="UTF-8">
+
+<title>아이디 중복 체크</title>
+
+</head>
+
+<body>
+<div class="jumbotron" style="width:600px; margin:auto; background:#feebcb;">
+  <div class="checkIDform" style='width:500px; margin-left:auto; margin-right:auto; border:1px'>
+    <div class="starter-template" >
+      <h5 style="font-weight: bold" > 아이디 중복 검사 </h5> <hr>
+    </div>
+    <form name=check  method=post action="/users/checkid">
+     <label for="exampleId1" style="font-weight: bold">아이디</label>
+     <div class="form-group-idcheck">
+
+       <input type="text"  class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" >
+       <input type="submit" class="btn btn-secondary"   id="Id_Check"  value="아이디 중복 체크">
+       <p>
+     </div>
+     <button type="button" onclick="popclose()" class="btn btn-default btn-block m-t-md" style="background: #ffa07a; color:black;">닫기</button>
+    </form>
+  </div>
+
+</div>
+</body>
+
+</html>

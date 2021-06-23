@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<div class="row">
+  <div class="col-2">
+    <div class="sidebar container p-3 my-3 border">
+      <ul class="nav flex-column">
+        <h5>재작량 관리 </h5>
+        <li class="nav-item"><a class="nav-link" href="/shop">상점 정보</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-2">
+  </div>
+    <div class="jumbotron col-4" style="background: #feebcb; margin-top: 50px; margin-left: 100px;">
+      <form class="" action="/shop/stock" method="post">
+        <h4><b>추가 제작</b></h4><hr><br>
+        <div class="form-inline">
+          <label for="">상품명</label>&nbsp;&nbsp;&nbsp;
+          <select class="form-control" name="selectStockProd" id="selectStockProd" style="width: 250px;">
+            <%
+            for(var i=0;i<prodata.length;i++){
+            %>
+            <option value="<%=prodata[i].productName%>,<%=prodata[i].productNum%>"><%=prodata[i].productName%></option>
+            <%
+            }
+            %>
+          </select>
+        </div><br>
+        <div class="form-inline">
+          <label for="">날짜</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="form-control" type="date" name="stockDate" value="">
+        </div><br>
+        <div class="form-inline">
+          <label for="">수량</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="form-control" type="text" name="stockQuantity" value="" style="width: 150px;">
+        </div><br>
+        <div class="form-inline">
+            <input type="submit" class="btn" value="등록하기" style="background: #ffa07a; width: 100px; cursor: pointer; margin-left: 60px;">
+            <input type="cancel" class="btn" value="취소하기" style="background: #ffa07a; width: 100px; cursor: pointer; margin-left: 40px;margin-right: 60px;" onClick="location.href='/shop/stock/1'">
+        </div>
+      </form>
+  </div>
+</div>

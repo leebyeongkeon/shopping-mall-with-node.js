@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+    <script language="javascript">
+      function validate() {
+         let item = document.getElementById("title").value;
+         if (item == '') {
+           alert("공지 제목이 입력되지 않았습니다, 꼭 입력하세요");
+           return false;
+         }
+         return true;
+      }
+
+      $(document).ready(function() {
+        bsCustomFileInput.init();
+      })
+    </script>
+<div class="row">
+  <div class="col-sm-2">
+    <nav id="sidebar">
+             <div class="sidebar-header">
+                 <h3>상품 조회</h3>
+             </div>
+
+             <ul class="list-unstyled components">
+                 <p>카테고리</p>
+                 <li class="active">
+                     <a href="#AccSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">액세서리</a>
+
+                               <ul class="collapse list-unstyled" id="AccSubmenu">
+                                  <li><a href="#">- 목걸이 </a></li>
+                                  <li><a href="#">- 귀걸이 </a></li>
+                                  <li><a href="#">- 반지 </a></li>
+                                  <li><a href="#">- 팔찌,발찌 </a></li>
+                                   <li><a href="#">- 기타 </a></li>
+                               </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#SoapSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">비누, 캔들</a>
+
+                               <ul class="collapse list-unstyled" id="SoapSubmenu">
+                                  <li><a href="#">- 비누 </a></li>
+                                  <li><a href="#">- 캔들 </a></li>
+                                  <li><a href="#">- 디퓨져 </a></li>
+
+                               </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#BeautySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">뷰티</a>
+
+                                <ul class="collapse list-unstyled" id="BeautySubmenu">
+                                   <li><a href="#">- 화장품 </a></li>
+                                   <li><a href="#">- 향수 </a></li>
+                                </ul>
+                 </li>
+                 <li class="active">
+                     <a href="#GeneralSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">잡화</a>
+
+                                <ul class="collapse list-unstyled" id="GeneralSubmenu">
+                                   <li><a href="#">- 가방 </a></li>
+                                   <li><a href="#">- 신발 </a></li>
+                                   <li><a href="#">- 모자 </a></li>
+                                   <li><a href="#">- 지갑 </a></li>
+                                </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#ElecSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">전자기기</a>
+
+                                <ul class="collapse list-unstyled" id="ElecSubmenu">
+                                   <li><a href="#">- 핸드폰 케이스 </a></li>
+                                   <li><a href="#">- 에어팟/버즈 케이스 </a></li>
+                                   <li><a href="#">- 파우치 </a></li>
+                                </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#ToySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">완구, 팬시</a>
+
+                                <ul class="collapse list-unstyled" id="ToySubmenu">
+                                   <li><a href="#">- 인형 </a></li>
+                                   <li><a href="#">- 문구/팬시 </a></li>
+                                   <li><a href="#">- 장난감 </a></li>
+                                </ul>
+                 </li>
+
+                 <li class="active">
+                     <a href="#SnackSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">식품</a>
+
+                                <ul class="collapse list-unstyled" id="SnackSubmenu">
+                                   <li><a href="#">- 디저트 </a></li>
+                                   <li><a href="#">- 커피/차 </a></li>
+                                   <li><a href="#">- 수제반찬 </a></li>
+                                </ul>
+                 </li>
+             </ul>
+         </nav>
+  </div>
+<div class="col-sm-10">
+  <div class="openshop container">
+    <h2>구매후기 등록</h2>
+    <hr>
+    <form action="/product/review/new" name="infoAdd" onsubmit="return validate()" method="POST" enctype="multipart/form-data" class="was-validated">
+      <!-- enctype="text/html" -->
+        <!-- 공지번호를 채울경우 해당 번호로 DB에 공지가 삽입 아니면 autoincrement -->
+
+        <div class="form-group">
+          <label for="product">상품명</label>
+          <input type="text" class="os form-control" id="product" name="productName" value="<%= list[0].orderProductName %>" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for=shop>상점명</label>
+          <input type="text" class="os form-control" id="shop" name="shopName" value="<%=shop[0].shopName%>" readonly>
+          <input type="hidden" value="<%=shop[0].shopNum%>" name="shopNum">
+          <input type="hidden" value="<%=list[0].orderProduct%>" name="prodNum">
+        </div>
+
+          <div class="form-group">
+            <label for="category">평가해주세요</label>
+            <select class="os form-control" id="assessment" name="assessment">
+              <option value="최고에요">최고에요</option>
+               <option value="좋아요">좋아요</option>
+               <option value="괜찮아요">괜찮아요</option>
+               <option value="별로에요">별로에요</option>
+               <option value="다시 사고싶지 않아요">우웩</option>
+             </select>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback"></div>
+          </div>
+
+         <div class="form-group">
+           <label for="intro">내용</label>
+           <input type="text" class="intro form-control" id="intro" name="intro" placeholder="문의 내용" required>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback"></div>
+         </div>
+         <div class="form-group">
+           <label for="intro">첨부파일</label>
+           <input type="file" class="form-control" id="intro" name="file" style="border:none;">
+         </div>
+         <button type="submit" class="btn btn-primary">등록</button>
+     </form>
+  </div>
+</div>

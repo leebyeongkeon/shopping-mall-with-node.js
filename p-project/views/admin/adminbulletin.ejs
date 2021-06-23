@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+ <!--  Content (배너이미지) 부분 -->
+ <script language="javascript">
+    $(document).ready(function() {
+      $("#checkAll").click(function(){
+            if ($("#checkAll").is(':checked')) {
+                $("input[name=info]").prop("checked", true);
+            } else {
+                $("input[name=info]").prop("checked", false);
+            }
+          });
+
+
+        $(".checkbox1").click(function(){
+            if($("input[name=info]:checked").length == 3){
+              $("#checkAll").prop("checked", true);
+            }else{
+              $("#checkAll").prop("checked", false);
+            }
+          });
+        });
+ </script>
+  <div> <img src="/images/admin_banner2.png" class="img-fluid" alt="배너이미지" width="100%"> </div>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <div class="container-fluid" style="margin-top:20px;">
+     <div class="row">
+       <div class="col-sm-2">
+         <div class="sidebar container p-3 my-3 border">
+           <ul class="nav flex-column">
+             <h5>게시판 관리</h5>
+             <li class="nav-item"><a class="nav-link" href="/adminbulletin/list/1">공지사항</a></li>
+             <li class="nav-item"><a class="nav-link" href="/adminbulletin/event/list/1">이벤트</a></li>
+             <li class="nav-item"><a class="nav-link" href="/adminbulletin/faq/list/1">FAQ</a></li>
+             <li class="nav-item"><a class="nav-link" href="/adminbulletin/enquiry/list/1">1:1문의</a></li>
+           </ul>
+         </div>
+       </div>
+       <div class="col-sm-10">
+     <div class="panel panel-default">
+   	  <div class="panel-heading">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">관리자</a></li>
+            <li class="breadcrumb-item">게시판관리</a></li>
+            <li class="breadcrumb-item active" aria-current="page">공지사항</li>
+          </ol>
+        </nav>
+   	  </div>
+
+      <hr>
+      <div class="container">
+        <form action="" id="frm" method="post">
+        <button type="button" onclick="location.href='/adminbulletin/info/form'">신규등록</button>
+        <button type="submit">삭제</button>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" class="checkbox1 form-check-input" id="checkAll" name="optionall" value="something" ></label></th>
+                <th> 글번호 </th>
+                <th> 글제목 </th>
+                <th> 작성자 </th>
+                <th> 날짜 </th>
+                <th> 조회수 </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+                   if(i > length){
+                       i++;
+                   }else{
+                   %>
+                <tr>
+                <td>
+                  <div class="form-check">
+                    <label class="form-check-label" for="check<%= i %>">
+                    <input type="checkbox" class="checkbox1 form-check-input" id="check<%= i %>" name="info" value="<%=infodata[i].infoNum%>"></label>
+                  </div>
+                </td>
+                <td> <%= infodata[i].infoNum %> </td>
+                <td><a href="/adminbulletin/info/detail?id=<%= infodata[i].infoNum %>"><%= infodata[i].infoName %> </td></a>
+                <td> <%= infodata[i].manager %> </td>
+                <td> <%= infodata[i].infoDATE %> </td>
+                <td> <%= infodata[i].hit %> </td>
+              </tr>
+              <% }} %>
+            </table>
+          </form>
+          </div>
+
+  <p>
+  <nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/adminbulletin/list/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+    </li>
+    <% for(var j = 0; j < infodata.length / page_num; j++){  %>
+      <li class="page-item"><a class="page-link" href="/adminbulletin/list/<%= j + 1 %>"><%= j + 1 %></a></li>
+    <% } %>
+    <li class="page-item">
+      <a class="page-link" href="/adminbulletin/list/<%= next %>">다음</a>
+    </li>
+  </ul>
+</nav>
+</div>
+</div>
+</div>
+</div>

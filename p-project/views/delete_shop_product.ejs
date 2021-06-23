@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <div class="container-fluid" style=" border-radius: 1px">
+     <div class="panel panel-default">
+     </div>
+
+     <div class="container" style="width: 300px; height: 150px; margin-top: 50px;">
+       <form action="/shop/product" method="post">
+         <input type="hidden" name="_method" value="delete">
+         <input type="hidden" name="hiddenProdNum" value="<%=productNum%>"/>
+         <h4><b>정말 삭제하시겠습니까?</b></h4><hr>
+         <center><input type="submit" class="btn" name="" value="삭제하기" style="background: #ffa07a; border: none; padding: 10px; border-radius: 3px;"/>
+           &nbsp;&nbsp;
+           <input type="button" class="btn" name="" value="취소하기" style="background: #ffa07a; border: none; padding: 10px; border-radius: 3px;" onClick="location.href='/shop/product_list/1'"/>
+         </center>
+       </form>
+     </div>
+  </div>

@@ -1,0 +1,129 @@
+
+
+
+<!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+ <div class="container-fluid" >
+   <div class="panel panel-default">
+    <% var recevData= orderData.split(',');
+       var orderDateForSend="";
+    %>
+    <hr>
+    <div class="container">
+     <div class="row align-items-center">
+        <div class=col-sm-2></div><!--사이드바용 공간-->
+        <div class="col-sm-10 row">
+          <div class=col-sm-4 style="width: 100%; margin: 0 3%;">
+             <div class="card mb-3">
+                <div class="card-body text-primary"style="height: 70%; overflow: hidden;">
+                    <div> <img class="img-fluid" src="<%=recevData[4]%>" > </div>
+                </div>
+                <center style="padding-bottom: 10px;"><strong><%=recevData[1]%></strong></center>
+              </div>
+            </div>
+          <div class="col-sm-4">
+
+            <div class="jumbotron" style="background: #FEEBCB; 100%; height: 300px;">
+                <h5><b>주문정보</b></h5>
+                <hr>
+                <div class="form-group">
+                  <div class="form-inline">
+                    <%var date=recevData[0].split('/');
+                    orderDateForSend+=date[2]+"-"+date[0]+"-"+date[1];
+                    var orderDate=date[2]+"년 "+date[0]+"월 "+date[1]+"일"%>
+                    <label for="">배송일 : </label>&nbsp;&nbsp;&nbsp;<%=orderDate%>
+                  </div>
+                  <div class="form-inline">
+                    <label for="">판매가격 : </label>&nbsp;&nbsp;&nbsp;<%=recevData[2]%>원
+                  </div>
+                  <div class="form-inline">
+                    <label for="">할인가 : </label>&nbsp;&nbsp;&nbsp;<%=recevData[5]%>원
+                  </div>
+                  <div class="form-inline">
+                    <label for="">수량 : </label>&nbsp;&nbsp;&nbsp;<%=recevData[6]%>개
+                  </div>
+                  <%var total=(recevData[2]-recevData[5])*recevData[6];%>
+                  <div class="form-inline">
+                    <label for="">합계금액 : </label>&nbsp;&nbsp;&nbsp;<%=total%>원
+                  </div>
+                  <br>
+                </div>
+                <br>
+            </div>
+          </div>
+
+        <div class="col-sm-9">
+            <div id="" class="" style="width: 100%">
+
+
+              <div class="jumbotron" style="background: #FEEBCB;">
+              <form class="" action="/order/payment " method="post">
+                <h5><strong>배송정보<strong></h5>
+                <hr>
+                <div class="form-group form-inline" style="margin-top: 15px;">
+                  <label for="exampleInputtel">수령인 </label>&nbsp;&nbsp;&nbsp;<input type="text" name="receiver"class="form-control" id="receiver" placeholder="이름을 입력하세요" value="<%=memData[0].name%>" style="width: 160px"/>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                  <label for="">주소입력</label><br>
+                  <input type="text" name="address"class="form-control" id="receiver" placeholder="주소를 입력하세요"/>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputtel">연락처</label>
+                    <div class="form-group-tel">
+                    <input type="text" class="form-control" name="tel1" id="tel1" placeholder="010">
+                    -
+                    <input type="text" class="form-control" name="tel2" id="tel2" placeholder="1234">
+                    -
+                    <input type="text" class="form-control" name="tel3" id="tel3" placeholder="5678">
+                    <p>
+                  </div>
+                  <label for="exampleInputtel">수신여부</label>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="recvCheck" value=""/>
+                </div>
+                <div class="form-gorup">
+                  <label for="exampleInputtel">배송메시지</label>&nbsp;&nbsp;&nbsp;
+                  <select name="recvMsg">
+                    <option value="없으면 경비실에 맡겨주세요">없으면 경비실에 맡겨주세요</option>
+                    <option value="당일 연락주세요">당일 연락주세요</option>
+                    <option value="전날 연락주세요">전날 연락주세요</option>
+                  </select>
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <h5 style="margin-bottom: 15px;"><strong>할인혜택</strong></h5>
+                  보유포인트&nbsp;&nbsp;(&nbsp;&nbsp;<%=memData[0].point%>&nbsp;&nbsp;)&nbsp;원<br>
+                  <div class="form-inline" style="margin-top: 10px;">
+                    <label>포인트사용&nbsp;&nbsp;</label>
+                      <input type="number" class="form-control" name="usepoint" value="0" placeholder="최대 <%=memData[0].point%>" max="<%=memData[0].point%>"  style="width: 150px"/>
+                  </div>
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <h5><strong>결제정보</strong><h5>
+                  <label>신한</label>&nbsp;<input type="radio" id="bank" name="bank" value=""/>&nbsp;&nbsp;&nbsp;
+                  <label>국민</label>&nbsp;<input type="radio" id="bank" name="bank" value=""/>&nbsp;&nbsp;&nbsp;
+                  <label>농협</label>&nbsp;<input type="radio" id="bank" name="bank" value=""/>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="form-group">
+                  <label>총 결제 금액</label> <%=total%><br>
+                  <label>주문금액</label> <%=recevData[5]*recevData[6]%><br>
+                  <label>할인금</label> <%=recevData[5]*recevData[6]%><br>
+                  <label>적립예정포인트</label> <%=recevData[5]*recevData[6]*0.05%><br>
+
+                  <input type="hidden" name="productName" value="<%=recevData[1]%>"/>
+                  <input type="hidden" name="productNum" value="<%=recevData[7]%>"/>
+                  <input type="hidden" name="deliveryDate" value="<%=orderDateForSend%>"/>
+                  <input type="hidden" name="quantity" value="<%=parseInt(recevData[6])%>"/>
+                  <input type="hidden" name="point" value="<%=memData[0].point%>"/>
+                </div>
+                <center><input type="submit" class="btn btn-default btn-block m-t-md" value="주문하기" style=" background: #ffa07a; color:black; width: 130px; margin: 0 110px;"/>
+                </center>
+              </form>
+              </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  </div>

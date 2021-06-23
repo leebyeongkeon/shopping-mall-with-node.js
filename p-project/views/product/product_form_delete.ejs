@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+      <div class="jumbotron" style="width:800px; margin:auto">
+        <% for(var i = 0; i<productDetail.length; i++) {
+          if(productDetail[i].productNum == productNum){ %>
+        <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+          <div class="starter-template">
+            <h4> 상품 정보 수정</h4> <hr>
+          </div>
+
+          <form name=join method="post" action="/adminprod/product" enctype="multipart/form-data">
+            <input type="hidden" name="_method" value="delete">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputPassword1" >상품번호</label>
+                  <input type="int" class="form-control" name="productNum" id="productNum" value="<%=productDetail[i].productNum%>" readonly >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">상점번호</label>
+                  <input type="int" class="form-control" name="shopNum" id="shopNum" value="<%=productDetail[i].shopNum%>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">분류</label>
+                  <select class="form-control" id="bigCate" name="bigCate">
+                    <option id="bigCate1" value=""  selected="selected">분류</option>
+                    <option id="bigCate2" value="액세서리">액세서리</option>
+                    <option id="bigCate3" value="비누, 캔들">비누, 캔들</option>
+                    <option id="bigCate4" value="뷰티">뷰티</option>
+                    <option id="bigCate5" value="잡화">잡화</option>
+                    <option id="bigCate5" value="전자기기">전자기기</option>
+                    <option id="bigCate6" value="완구, 팬시">완구, 팬시</option>
+                    <option id="bigCate7" value="식품">식품</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">세부</label>
+                    <select class="form-control" id="midCate" name="midCate">
+                    </select>
+                </div>
+                <!-- <div class="form-group">
+                  <label for="exampleFormControlSelect1">소분류</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name=smallCate>
+                      <option>선풍기</option>
+                      <option>에어컨</option>
+                      <option>냉풍기</option>
+                      <option>미니선풍기</option>
+                      <option>냉장고</option>
+                      <option>얼풍기</option>
+                    </select>
+                </div> -->
+                <label for="exampleInputEmail1">상품이미지 (적정사이즈:250x180)</label>
+                <div class="form-group">
+                   <input type="file" class="custom-file-input2" id="entry" width=10px aria-describedby="entry2" accept="image/*" name="productImg">
+                </div>
+              </div>
+
+              <div class="form-goup col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputPassword2">상품명</label>
+                  <input type="text" class="form-control" name="productName" id="productName" value="<%=productDetail[i].productName%>" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword2">상점명</label>
+                  <input type="text" class="form-control" name="shopName" id="shopName" value="<%=productDetail[i].shopName%>" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword2">가격</label>
+                  <input type="int" class="form-control" name="price" id="price" value="<%=productDetail[i].price%>" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword2">최소 가격</label>
+                  <input type="int" class="form-control" name="minPrice" id="minPrice" value="<%=productDetail[i].minPrice%>" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword2">상품 소개글</label>
+                  <input type="text" class="form-control" name="productMent" id="productMent" value="<%=productDetail[i].productMent%>" >
+                </div>
+                <label for="exampleInputEmail1">세부이미지 (적정사이즈:250x180)</label>
+                <div class="form-group">
+                   <input type="file" class="custom-file-input2" id="entry" width=10px aria-describedby="entry2" accept="image/*" name="detailImg">
+                </div>
+              </div>
+            </div>
+            <hr>
+            <input type="hidden" name="_method" value="delete">
+            <button type="<%=buttonType%>" style="float:right"><%=button2%></button>
+            <button type="button" onclick="location.href='/adminprod/list/1'">목록</button>
+          </form>
+        </div>
+        <% }} %>
+      </div>
+    </div><!-- /.container -->
+
+ <!-- Footer 영역 -->

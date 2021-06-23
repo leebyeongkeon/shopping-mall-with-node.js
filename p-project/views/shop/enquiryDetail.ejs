@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<div class="container">
+  <% for(var i = 0; i<Detail.length; i++) {
+    if(Detail[i].enquiryNum == id){ %>
+  <div class="faqtitle">
+    <strong><h2 style="display:inline;"><%= Detail[i].enquiryTitle %></h2></strong>
+      <strong><h5 style="display:inline;">| 상품 문의</h5></strong>
+    <h7 style="float:right;">작성일자: <%=Detail[i].date%></h7>
+  </div>
+  <hr>
+  <div class="ment">
+    <div class="container" style="height:200px">
+      <p><%= Detail[i].writerMent %></p>
+
+    </div>
+  </div>
+
+   <% }} %>
+
+   <% for(var i =0 ; i<comment.length; i++){ %>
+      <div class="reply" style="margin-bottom: 30px; margin-top: 50px;height:100px;">
+        <img src="/images/admin.png"  style="height:25px;"alt="">
+       <span class="commentWriter">답변자: <%=comment[i].commentWriter%></span>
+       <span class="commentDATE" style="float:right">답변날짜: <%=comment[i].commentDATE%> </span>
+       <div class="container" style="width:100%; height:100%; margin-top: 8px;border:1px solid black"><pre><%=comment[i].commentMent%></pre></div>
+      </div>
+      <%}%>
+   <hr>
+   <div class="container">
+   <button type="button" onclick="location.href='/shop/review/list/1'" class="btn btn-primary">목록</button>
+   </div>
+</div>
+x

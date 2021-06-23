@@ -1,0 +1,81 @@
+
+	table.addtable {
+		width: 100%;
+
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+		table.addtable tr th, table.addtable tr td {
+				border-color: #FFFFFF;
+		}
+    .table-title {
+
+    }
+    .table-title h2 {
+
+        font-size: 20px;
+    }
+    .table-title .add-new {
+				margin-top: 15px;
+				float: right;
+				height: 30px;
+				font-weight: bold;
+				font-size: 12px;
+				text-shadow: none;
+				min-width: 100px;
+				border-radius: 50px;
+				line-height: 13px;
+    }
+	.table-title .add-new i {
+		margin-right: 4px;
+	}
+    table.addtable {
+        table-layout: fixed;
+    }
+
+    table.addtable th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.addtable th:last-child {
+        width: 45px;
+    }
+    table.addtable td a {
+				cursor: pointer;
+        display: inline-block;
+        /* margin: 5px; */
+				padding: 5px;
+			  min-width: 15px;
+    }
+	table.addtable td a.add {
+        color: #27C46B;
+    }
+    table.addtable td a.edit {
+        color: #FFC107;
+    }
+    table.addtable td a.delete {
+        color: #E34724;
+    }
+    table.addtable td i {
+        font-size: 19px;
+    }
+	table.addtable td a.add i {
+        font-size: 24px;
+    	margin-right: -1px;
+        position: relative;
+        top: 3px;
+    }
+    table.addtable .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+	table.addtable .form-control.error {
+		border-color: #f50000;
+	}
+	table.addtable td .add {
+		display: none;
+	}

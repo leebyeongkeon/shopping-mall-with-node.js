@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+    <p>
+    <div class="container">  <!-- container class 가 페이지의 컨텐츠영역을 지정 -->
+    <div class="jumbotron" style="width:800px; margin:auto">
+      <% for(var i = 0; i<shopDetail.length; i++) {
+        if(shopDetail[i].shopNum == shopNum){ %>
+
+    <div class="bm-login-form" style='width:700px; margin-left:auto; margin-right:auto; border:1px'>
+
+      <div class="starter-template">
+        <h4> 상점정보수정 및 삭제</h4> <hr>
+      </div>
+    </div>
+
+    <form name=join onsubmit="return validate()" method=post action="/adminsh/delete?shopNum=<%=shopNum%>" enctype="text/html">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="form-group">
+          <label for="exampleInputPassword1">상점번호</label>
+          <input type="int" class="form-control" name="shopNum" id="shopNum" value="<%=shopDetail[i].shopNum%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">상점명</label>
+          <input type="text" class="form-control" name="shopName" id="shopName" value="<%=shopDetail[i].shopName%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">입점번호</label>
+          <input type="int" class="form-control" name="openshopNum" id="openshopNum" value="<%=shopDetail[i].openshopNum%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">상점소개글</label>
+          <input type="text" class="form-control" name="shopMent" id="shopMent" value="<%=shopDetail[i].shopMent%>"  >
+        </div>
+        <label for="exampleInputEmail1">상점이미지 (적정사이즈:250x180)</label>
+        <div class="form-group">
+          <input type="file" class="custom-file-input2" id="shopImg" width=10px aria-describedby="entry2" accept="image/*" name="shopImg">
+        </div>
+      </div>
+      <div class="form-goup col-md-6">
+        <div class="form-group">
+          <label for="exampleInputPassword2">상점상태</label>
+          <input type="int" class="form-control" name="shopStatus" id="shopStatus" value="<%=shopDetail[i].shopStatus%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">대표자</label>
+          <input type="text" class="form-control" name="master" id="master" value="<%=shopDetail[i].master%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">대표 Tel</label>
+          <input type="text" class="form-control" name="masterTel" id="masterTel" value="<%=shopDetail[i].masterTel%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">대표 Email</label>
+          <input type="text" class="form-control" name="masterEmail" id="masterEmail" value="<%=shopDetail[i].masterEmail%>"  >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">대표 주소</label>
+          <input type="text" class="form-control" name="shopAddr" id="shopAddr" value="<%=shopDetail[i].shopAddr%>"  >
+        </div>
+      </div>
+    </div>
+
+          <hr>
+          <input type="hidden" name="_method" value="delete">
+          <button type="<%=buttonType%>" style="float:right"><%=button2%></button>
+          <button type="button" onclick="location.href='/adminsh/list/1'">목록</button>
+         </form>
+         </div>
+         <% }} %>
+         </div>
+        </div><!-- /.container -->
+
+     <!-- Footer 영역 -->

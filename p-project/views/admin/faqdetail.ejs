@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<div class="container">
+  <% for(var i = 0; i< Detail.length; i++) {
+    if(Detail[i].faqNum == id){ %>
+  <div class="faqtitle">
+    <strong><h2><%= Detail[i].faqTitle %></h2></strong>
+  </div>
+  <hr>
+  <div class="ment">
+    <p><%= Detail[i].faqMent %></p>
+  </div>
+   <% }} %>
+   <hr>
+   <div class="container">
+   <%=admin%><form action="/adminbulletin/faq/detail?id=<%=id%>" method="post" style="display: inline; float: right; margin-left: 10px">
+   <input type="hidden" name="_method" value="delete">
+   <button type="<%=buttonType%>" onclick="<%=onclick2%>" class="btn btn-danger"><%=button2%></button>
+   <%=admin%></form>
+   <button type="<%=buttonType%>" onclick="location.href='/adminbulletin/faq/update?id=<%=id%>'" class="btn btn-primary" style="display: inline; float:right;"><%=button1%></button>
+   <button type="button"  class="btn btn-primary" onclick="location.href='/adminbulletin/faq/list/1'">목록</button>
+   </div>
+ </div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+ <!--  Content (배너이미지) 부분 -->
+  <div> <img src="/images/admin_banner2.png" class="img-fluid" alt="배너이미지" width="100%"> </div>
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <div class="container-fluid" >
+     <div class="panel panel-default">
+   	  <div class="panel-heading">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">회원 관리</a></li>
+            <li class="breadcrumb-item">회원 조회</a></li>
+       <!-- <li class="breadcrumb-item active" aria-current="page">회원 정보 수정</li> -->
+          </ol>
+        </nav>
+   	  </div>
+
+      <hr>
+      <div class="container">
+        <a class="btn btn-default" href="/adminmem/form">신규 회원 등록</a>
+        <!-- <a class="btn btn-default" href="#">회원 정보 수정</a>
+        <a class="btn btn-default" href="#">회원 정보 삭제</a> -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> 회원번호 </th>
+                <th> 이름 </th>
+                <th> 아이디 </th>
+                <th> 성별 </th>
+                <th> 생년월일 </th>
+                <th> 권한 </th>
+                <th> 삭제 </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+                   if(i > length){
+                       i++;
+                   }else{
+                   %>
+              <tr>
+                <td> <%= memberdata[i].memberNum %> </td>
+                <td> <a class="btn btn-default" href="/adminmem/detail?memberNum=<%= memberdata[i].memberNum %>"><%= memberdata[i].name %></a> </td>
+                <td> <a class="btn btn-default" href="/adminmem/detail?memberNum=<%= memberdata[i].memberNum %>"><%= memberdata[i].id %></a> </td>
+                <td> <a class="btn btn-default" href="/adminmem/detail?memberNum=<%= memberdata[i].memberNum %>"><%= memberdata[i].gender %></a> </td>
+                <td> <a class="btn btn-default" href="/adminmem/detail?memberNum=<%= memberdata[i].memberNum %>"><%= memberdata[i].birth %></a> </td>
+                <td> <a class="btn btn-default" href="/adminmem/detail?memberNum=<%= memberdata[i].memberNum %>"><%=memberArray[i]%></a> </td>
+                <td> <a class="btn btn-default" href="/adminmem/delete/<%= memberdata[i].memberNum %>">삭제</td>
+              </tr>
+              <% }} %>
+            </table>
+          </div>
+
+  <p>
+    <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="/adminmem/list/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+      </li>
+      <% for(var j = 0; j < memberdata.length / page_num; j++){  %>
+        <li class="page-item"><a class="page-link" href="/adminmem/list/<%= j + 1 %>"><%= j + 1 %></a></li>
+      <% } %>
+      <li class="page-item">
+        <a class="page-link" href="/adminmem/list/<%= next %>">다음</a>
+      </li>
+    </ul>
+  </nav>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+    <ul class="nav flex-column">
+      <h5>리뷰관리 </h5>
+      <li class="nav-item"><a class="nav-link" href="/shop">상점 정보</a></li>
+      <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+      <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+      <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+      <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+      <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+    </ul>
+    </div>
+  </div>
+<div class="col-sm-10">
+  <div class="container" style="margin-top:40px;">
+    <form action="" id="frm" method="post">
+      <table class="table">
+        <thead>
+          <tr>
+            <th> 글번호 </th>
+            <th> 상품명 </th>
+            <th> 이미지 </th>
+            <th> 글내용 </th>
+            <th> 작성자 </th>
+            <th> 작성 날짜 </th>
+            <th> 좋아요 </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+               if(i > length){
+                   i++;
+               }else{
+
+               %>
+          <tr>
+            <td style="margin-left:5px;"> <%= review[i].reviewNum %> </td>
+            <td> <%=review[i].productName %></td>
+            <td><a href="/comm/review/detail?id=<%=review[i].reviewNum%>"><img class="img-fluid" src="/images/review/<%= review[i].reviewImg %>" style="height:50px; width:50px;"></td></a>
+            <td><a href="/comm/review/detail?id=<%= review[i].reviewNum %>"><%= review[i].reviewMent %> </td></a>
+            <td> <%= review[i].writer %> </td>
+            <td> <%= review[i].reviewDATE %> </td>
+            <td> <%= review[i].reviewGood %> </td>
+          </tr>
+          <% }} %>
+        </table>
+      </form>
+      </div>
+
+  <hr/>
+  <p>
+  <nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/comm/review/list/<%= previous %>" tabindex="-1" aria-disabled="true">이전</a>
+    </li>
+    <% for(var j = 0; j < review.length / page_num; j++){  %>
+      <li class="page-item"><a class="page-link" href="/comm/review/list/<%= j + 1 %>"><%= j + 1 %></a></li>
+    <% } %>
+    <li class="page-item">
+      <a class="page-link" href="/comm/review/list/<%= next %>">다음</a>
+    </li>
+  </ul>
+</nav>
+
+  </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/stylesheets/style2.css">
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#sidebarCollapse').on('click', function () {
+              $('#sidebar').toggleClass('active');
+          });
+      });
+
+      $('.js-slick-carousel').slick(slickSettings);
+      // reinitialization
+      $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+
+      $( window ).resize(handleResize);
+
+      function modifyMem(){
+        window.open('modifyuser','modi','width=600,height=300,top=100,left=400');
+      }
+  </script>
+
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+  <div class="wrapper">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>마이페이지</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+
+        <li class="active">
+          <a href="#memberInfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">개인 정보</a>
+            <ul class="collapse list-unstyled" id="memberInfo">
+              <li><a href="#">- 회원정보 수정/탈퇴 </a></li>
+            </ul>
+        </li>
+        <li class="active">
+          <a href="#memberOrder" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">주문/배송</a>
+            <ul class="collapse list-unstyled" id="memberOrder">
+
+              <li><a href="/order/list">- 주문/배송 조회 </a></li>
+            </ul>
+        </li>
+        <li class="active">
+          <a href="#memberBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">게시물 관리</a>
+            <ul class="collapse list-unstyled" id="memberBoard">
+              <li><a href="/users/review/list/1">- 리뷰 </a></li>
+                <li><a href="/service/mallenquiry/list/1">- 문의 내역 </a></li>
+            </ul>
+        </li>
+      </ul>
+    </nav>
+
+
+    <div class = "container" >
+      <div class="jumbotron" style=" margin:auto;  background:#fff9ea; " >
+
+        <div class="info" style='padding:40px; width:600px; margin-left:auto; margin-right:auto; border:1px solid; border-radius:10px;'>
+
+          <div class="starter-template" >
+            <h5 style="font-weight: bold" > <%=name %>님 회원 정보 </h5><hr>
+          </div>
+
+          <form name=mypageinfo onsubmit="return validate()" method=post action="/users/profile">
+            <div class="memberInfo">
+              <label for="exampleInputName" style=" font-style:italic">이름 </label> <p style="color:black; font-weight:bold">: <%=name %> </p>
+            </div>
+            <div class="memberInfo">
+              <label for="exampleInputName"  style=" font-style:italic">아이디  </label> <p style="color:black; font-weight:bold">: <%=id %></p>
+            </div>
+            <div class="memberInfo">
+              <label for="exampleInputName"  style=" font-style:italic">이메일  </label> <p style="color:black; font-weight:bold">: <%=email %> </p>
+            </div>
+            <div class="memberInfo">
+              <label for="exampleInputName"  style=" font-style:italic">연락처</label> <p style="color:black; font-weight:bold">: <%=tel %></p>
+            </div>
+            <div class="memberInfo">
+              <label for="exampleInputName"  style=" font-style:italic">생년월일  </label> <p style="color:black; font-weight:bold">: <%=birth %> </p>
+            </div>
+            <div class="memberInfo">
+              <label for="exampleInputName"  style=" font-style:italic">문자 알림설정  </label> <p style="color:black; font-weight:bold">: <%=smsRec %></p>
+            </div>
+            <div class="memberInfo">
+              <label for="exampleInputName"  style=" font-style:italic">이메일 알림설정 </label> <p style="color:black; font-weight:bold">: <%=emailRec %></p>
+            </div>
+
+            <div class="memberInfo" style="display:inline">
+              <input type="button" onclick="location.href='/users/modifyInfo'" class="btn btn-secondary btn-sm"  id="modifyMember"  value="정보 수정" >
+
+              <input type="button" onClick="location.href='/users/deleteuser'" class="btn btn-secondary btn-sm"  id="deleteMember"  value="회원 탈퇴" style="margin-left:360px" >
+              <p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div> <!--content -->
+
+  </div> <!-- wrapper -->

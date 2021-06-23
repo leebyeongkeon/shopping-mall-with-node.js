@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<div class="container">
+  <% for(var i = 0; i<faqDetail.length; i++) {
+    if(faqDetail[i].faqNum == id){ %>
+  <div class="faqtitle">
+    <strong><h2><%= faqDetail[i].faqTitle %></h2></strong>
+  </div>
+  <hr>
+  <div class="ment">
+    <p><%= faqDetail[i].faqMent %></p>
+  </div>
+   <% }} %>
+</div>

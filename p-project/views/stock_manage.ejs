@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <div class="row">
+      <div class="col-sm-2">
+        <div class="sidebar container p-3 my-3 border">
+          <ul class="nav flex-column">
+            <h5> 제작량 관리 </h5>
+            <li class="nav-item"><a class="nav-link" href="">상점 정보</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+            <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container col-sm-10">
+        <form action="/shop/stock" method="post">
+          <input type="hidden" name="_method" value="delete"/>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="submit" value="제작 취소" id="checkDelete" style=" background: #00000000; border-color: #00000000;"/>
+              </th>
+                <!-- <th><input type="checkbox" class="checkbox1 form-check-input" id="checkAll" name="optionall" value="something" ></label></th> -->
+                <th> 상품번호 </th>
+                <th> 상품명 </th>
+                <th> 수량 </th>
+                <th> 날짜 </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tbody>
+                <% for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+                     if(i > length){
+                         i++;
+                     }else{
+                     %>
+              <tr>
+                <td>
+                  <div class="form-check">
+                    <label class="form-check-label" for="check<%= i %>">
+                    <input type="radio" class="checkbox1 form-check-input" id="check<%= i %>" name="checkedStock" value="<%=stockData[i].stockIdx%>"></label>
+                  </div><!--체크박스를 사용해서 여러개씩 삭제하도록 구현할 수 있으나 1개만 체크해서 삭제할 경우 오류가 생겨 radio버튼으로 1개씩만 삭제하도록 구현했음-->
+                </td>
+                <%
+                var date=stockData[i].stockDATE;
+                var month=date.getMonth()+1;
+                var year=date.getFullYear();
+                var day=date.getDate();
+                var stockDate=''+year+'년 '+month+'월 '+day+'일';
+                %>
+                <td style="cursor:pointer;" onClick="location.href='/shop/stockup/<%=stockData[i].stockIdx%>'"> <%= stockData[i].stockProduct %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/stockup/<%=stockData[i].stockIdx%>'"> <%= stockData[i].stockProdName %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/stockup/<%=stockData[i].stockIdx%>'"> <%= stockData[i].stockAmount %> </td>
+                <td style="cursor:pointer;" onClick="location.href='/shop/stockup/<%=stockData[i].stockIdx%>'"> <%= stockDate %> </td>
+              </tr>
+              <% }
+            } %>
+            </table>
+          </form>
+          <a class="btn btn-default" href="/shop/stock">추가 제작</a>
+          </div>
+</div>
+  <p>
+    <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/shop/stock/<%= previous %>" tabindex="-1">이전</a>
+      </li>
+      <% for(var j = 0; j < stockData.length / page_num; j++){  %>
+        <li class="page-item"><a class="page-link" href="/shop/stock/<%= j + 1 %>"><%= j + 1 %></a></li>
+      <% } %>
+      <li class="page-item">
+        <a class="page-link" href="/shop/stock/<%= next %>">다음</a>
+      </li>
+    </ul>
+    </nav>

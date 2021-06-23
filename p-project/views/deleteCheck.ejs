@@ -1,0 +1,111 @@
+
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="/stylesheets/style2.css">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+
+
+
+
+
+$('.js-slick-carousel').slick(slickSettings);
+
+// reinitialization
+$('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+
+$( window ).resize(handleResize);
+
+
+
+function modifyMem(){
+  window.open('modifyuser','modi','width=600,height=300,top=100,left=400');
+
+}
+</script>
+
+
+
+
+
+
+  <!-- 컨텐츠(예, 쇼핑몰일경우 판매제품리스트)헤더부분 -->
+   <div class="wrapper">
+
+    <nav id="sidebar">
+              <div class="sidebar-header">
+                  <h3>마이페이지</h3>
+              </div>
+
+
+              <ul class="list-unstyled components">
+
+                  <li class="active">
+                      <a href="#memberInfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">개인 정보</a>
+
+                                <ul class="collapse list-unstyled" id="memberInfo">
+                                   <li><a href="#">- 회원정보 수정/탈퇴 </a></li>
+                                </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#memberOrder" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">주문/배송</a>
+
+                                <ul class="collapse list-unstyled" id="memberOrder">
+                                   <li><a href="#">- 장바구니 </a></li>
+                                   <li><a href="#">- 주문/배 조회 </a></li>
+                                </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="#memberBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">게시물 관리</a>
+
+                                <ul class="collapse list-unstyled" id="memberBoard">
+                                   <li><a href="#">- 리뷰 </a></li>
+                                   <li><a href="#">- 문의 내역 </a></li>
+                                </ul>
+                  </li>
+
+
+
+
+
+
+              </ul>
+
+        </nav>
+
+
+  <div class = "container" >
+    <div class="jumbotron" style=" margin:auto;  background:#fff9ea; " >
+
+
+
+        <div class="checkIDform" style='width:500px; margin-left:auto; margin-right:auto; border:1px'>
+          <div class="starter-template" >
+            <h5 style="font-weight: bold" > 회원 탈퇴 </h5> <hr>
+          </div>
+          <form name=check  method=post action="/users/deleteuser">
+           <label for="exampleId1" style="font-weight: bold">회원 탈퇴를 원하시면 비밀번호를 입력하세요.</label>
+           <div class="form-group-idcheck">
+
+             <input type="password"  class="form-control" name="pw" id="pw" placeholder="비밀번호를 입력하세요" >
+             <input type="submit" class="btn btn-secondary"   id="delete"  value="탈퇴 하기" style="margin-left:30px;">
+             <p>
+           </div>
+           <button type="button" onclick="popclose()" class="btn btn-default btn-block m-t-md" style="background: #ffa07a; color:black;">닫기</button>
+          </form>
+        </div>
+
+
+
+
+     </div>
+
+  </div> <!--content -->
+
+</div> <!-- wrapper -->

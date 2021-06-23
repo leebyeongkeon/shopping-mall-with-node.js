@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<script language="javascript">
+  $(document).ready(function() {
+    bsCustomFileInput.init();
+  })
+</script>
+<div class="row">
+  <div class="col-sm-2">
+    <div class="sidebar container p-3 my-3 border">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link" href="">상점 정보</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/product_list/1">상품 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/stock/1">제작량 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/order/shoplist">주문 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/review/list/1">리뷰 관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shop/enquiry/list/1">문의 관리</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-10">
+    <div class="openshop container">
+      <h4>상점 정보 수정</h4>
+      <p>모든 항목을 채워주시기 바랍니다.</p>
+      <form accept-charset="UTF-8" action="/shop/update" role="form" method="post" enctype="multipart/form-data" class="was-validated">
+         <input type="hidden" name="_method" value="put"/>
+         <div class="form-group">
+           <label for="name">상점명</label>
+           <input type="text" class="os form-control" id="shopName" name="shopName" placeholder="상점명을 입력하세요." name="uname" required value="<%=shopData[0].shopName%>" readonly>
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="manager">대표</label>
+           <input type="text" class="os form-control" id="master" name="master" placeholder="대표명을 입력하세요." name="pswd" required value="<%=shopData[0].master%>">
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="tel">연락처</label>
+           <input type="text" class="os form-control" id="masterTel" name="masterTel" placeholder="연락처를 입력하세요." name="pswd" required value="<%=shopData[0].masterTel%>">
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="email">이메일</label>
+           <input type="text" class="os form-control" id="masterEmail" name="masterEmail" placeholder="이메일을 입력하세요." name="pswd" required value="<%=shopData[0].masterEmail%>">
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="address">주소</label>
+           <input type="text" class="os form-control" id="shopAddr" name="shopAddr" placeholder="주소를 입력하세요." name="pswd" required value="<%=shopData[0].shopAddr%>">
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">Please fill out this field.</div>
+         </div>
+         <div class="form-group">
+           <label for="intro">상점 소개</label>
+           <input type="text" class="intro form-control" id="shopMent" name="shopMent" placeholder="상점 소개" name="pswd" required value="<%=shopData[0].shopMent%>">
+           <div class="valid-feedback">Valid.</div>
+           <div class="invalid-feedback">상점 소개에 들어갈 내용입니다.</div>
+         </div>
+         <div class="form-group">
+           <label for="photo">대표이미지</label>
+           <input class="custom-file-input2" type="file" id="shopImg" name="shopImg" aria-describedby="entry2"  accept="image/*" ><br>
+           <input type="hidden" id="imgFlag" name="imgFlag" value="0"/>
+           <div class="img_wrap">
+             <img src="<%=shopData[0].shopImg%>" id="shopImgView" style="width: 200px; margin-top: 20px;"/>
+           </div>
+         </div>
+         <button type="submit" class="btn btn-primary" style="border:none; border-radius: 5px; padding: 10px; background-color: #ffa07a;">수정완료</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<div class="container">
+  <% for(var i = 0; i<Detail.length; i++) {
+    if(Detail[i].reviewNum == id){ %>
+  <div class="faqtitle">
+    <strong><h2 style="display:inline;"><%= Detail[i].productName %></h2></strong>
+      <strong><h5 style="display:inline;"> | 상품 후기</h5></strong>
+    <h7 style="float:right;">작성일자: <%=Detail[i].reviewDATE%></h7>
+  </div>
+  <hr>
+  <div class="ment">
+    <div class="container" style="height: 100%;position: relative;">
+      <p><%= Detail[i].reviewMent %></p>
+      <img src="/images/review/<%= Detail[i].reviewImg %>" style="width:100%" alt="">
+
+    </div>
+    <span style="margin-left:10px; color:red" ><%=Detail[i].assessment%></span>
+  </div>
+
+   <% }} %>
+   <hr>
+   <div class="container">
+   <button type="button" onclick="location.href='/comm/review/list/1'" class="btn btn-primary">목록</button>
+   </div>
+</div>
